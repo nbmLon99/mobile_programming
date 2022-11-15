@@ -1,4 +1,4 @@
-package com.nbmlon.a2022mobileprogrammingteamproject.maplistener;
+package com.nbmlon.a2022mobileprogrammingteamproject.view.maplistener;
 
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;

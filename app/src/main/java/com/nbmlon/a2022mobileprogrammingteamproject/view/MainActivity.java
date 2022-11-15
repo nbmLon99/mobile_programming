@@ -1,15 +1,17 @@
-package com.nbmlon.a2022mobileprogrammingteamproject;
+package com.nbmlon.a2022mobileprogrammingteamproject.view;
 
 import android.os.Bundle;
 import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.nbmlon.a2022mobileprogrammingteamproject.maplistener.MyMapViewEventListener;
-import com.nbmlon.a2022mobileprogrammingteamproject.maplistener.MyPOIItemEventListener;
+import com.nbmlon.a2022mobileprogrammingteamproject.R;
+import com.nbmlon.a2022mobileprogrammingteamproject.view.maplistener.MyMapViewEventListener;
+import com.nbmlon.a2022mobileprogrammingteamproject.view.maplistener.MyPOIItemEventListener;
 
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
+
 
 public class MainActivity extends AppCompatActivity {
     MapView mapView;

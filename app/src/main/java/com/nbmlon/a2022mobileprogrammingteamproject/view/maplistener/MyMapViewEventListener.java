@@ -1,6 +1,5 @@
-package com.nbmlon.a2022mobileprogrammingteamproject.maplistener;
+package com.nbmlon.a2022mobileprogrammingteamproject.view.maplistener;
 
-import net.daum.android.map.MapViewEventListener;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
