@@ -1,34 +1,45 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.PropertyName;
 
+@Entity
 public class PlaceDTO {
+    @Exclude
+    @PrimaryKey
+    private String id;
+
+    @ColumnInfo(name = "name")
     @PropertyName("name")
     private String name;
-    @PropertyName("city")
+    @ColumnInfo(name = "city")
     private String city;
-    @PropertyName("address")
+
+    @ColumnInfo(name = "address")
     private String address;
 
-    @PropertyName("longitude")
+    @ColumnInfo(name = "longitude")
     private String longitude;
-    @PropertyName("langitude")
+    @ColumnInfo(name = "langitude")
     private String langitude;
-
-    @PropertyName("phone")
+    @ColumnInfo(name = "phone")
     private String phone;
-    @PropertyName("url")
+    @ColumnInfo(name = "url")
     private String url;
 
-    @PropertyName("parking")
+    @ColumnInfo(name = "parking")
     private Boolean parking;
-    @PropertyName("storage")
+    @ColumnInfo(name = "storage")
     private Boolean storage;
-    @PropertyName("infantHolder")
+    @ColumnInfo(name = "infantHolder")
     private Boolean infantHolder;
-    @PropertyName("wheelChair")
+    @ColumnInfo(name = "wheelChair")
     private Boolean wheelChair;
-    @PropertyName("pointRoad")
+    @ColumnInfo(name = "pointRoad")
     private Boolean pointRoad;
 
     public PlaceDTO(String name,String city, String address, String longitude, String  langitude, String  url, Boolean parking, Boolean storage, Boolean infantHolder , Boolean wheelChair, Boolean pointRoad){
