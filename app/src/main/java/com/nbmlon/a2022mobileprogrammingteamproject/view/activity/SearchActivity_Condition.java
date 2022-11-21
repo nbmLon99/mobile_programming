@@ -51,8 +51,12 @@ public class SearchActivity_Condition extends AppCompatActivity {
                         getStatus(wheelGroup),
                         getStatus(pointRoadGroup)
                 );
+                //로딩뷰 띄우기
             }
         });
+
+
+        //observe 한다음 검색 다 되면 로딩뷰 지우고 finish
     }
 
 
