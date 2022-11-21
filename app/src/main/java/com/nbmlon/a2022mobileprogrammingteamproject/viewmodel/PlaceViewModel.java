@@ -14,6 +14,7 @@ public class PlaceViewModel extends ViewModel {
     }
 
 
+    /** startSearch within Firebase - for SearchActivity_Condition **/
     public void searchForCondition(
             String area,
 
@@ -25,5 +26,11 @@ public class PlaceViewModel extends ViewModel {
     ) {
 
     }
+
+    /** startSearch within Room - for SearchActtivity_Tag **/
+    public void searchForTags(int[] ids){
+
+    }
+
 
 }
