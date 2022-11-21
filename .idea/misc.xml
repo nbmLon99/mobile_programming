@@ -7,14 +7,18 @@
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_main2.xml" value="0.1" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_place_info.xml" value="0.1" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_search_condition.xml" value="0.1" />
-        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_search_tag.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_search_tag.xml" value="0.22" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_setting_tag.xml" value="0.1" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_spinner_area.xml" value="0.1" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_list.xml" value="0.13451086956521738" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_selectable.xml" value="0.13451086956521738" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_setting_btn.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_setting_control.xml" value="0.1" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_item_search_tag.xml" value="0.1" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_menu.xml" value="0.1" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_tag_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/loading_view.xml" value="0.13451086956521738" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/mapview.xml" value="0.1" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/spinner_area_item.xml" value="0.1" />
       </map>
