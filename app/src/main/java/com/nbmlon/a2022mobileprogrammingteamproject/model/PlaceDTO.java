@@ -4,8 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.google.firebase.firestore.Exclude;
-import com.google.firebase.firestore.PropertyName;
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.PropertyName;
 
 @Entity
 public class PlaceDTO {
