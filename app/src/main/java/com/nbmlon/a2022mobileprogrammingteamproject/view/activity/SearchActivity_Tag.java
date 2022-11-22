@@ -38,8 +38,6 @@ public class SearchActivity_Tag extends AppCompatActivity {
                 //로딩 다이얼로그 띄우기
             }
         });
-
-
         //observe 후 검색완료시 finish
     }
 }
