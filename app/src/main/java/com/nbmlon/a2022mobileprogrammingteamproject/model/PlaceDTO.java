@@ -27,8 +27,8 @@ public class PlaceDTO implements Parcelable {
 
     @ColumnInfo(name = "longitude")
     private String longitude;
-    @ColumnInfo(name = "langitude")
-    private String langitude;
+    @ColumnInfo(name = "latitude")
+    private String latitude;
     @ColumnInfo(name = "phone")
     private String phone;
     @ColumnInfo(name = "url")
@@ -51,7 +51,7 @@ public class PlaceDTO implements Parcelable {
         city = in.readString();
         address = in.readString();
         longitude = in.readString();
-        langitude = in.readString();
+        latitude = in.readString();
         phone = in.readString();
         url = in.readString();
         byte tmpParking = in.readByte();
@@ -73,7 +73,7 @@ public class PlaceDTO implements Parcelable {
         dest.writeString(city);
         dest.writeString(address);
         dest.writeString(longitude);
-        dest.writeString(langitude);
+        dest.writeString(latitude);
         dest.writeString(phone);
         dest.writeString(url);
         dest.writeByte((byte) (parking == null ? 0 : parking ? 1 : 2));
@@ -105,7 +105,7 @@ public class PlaceDTO implements Parcelable {
     public String getCity() {return city;}
     public String getAddress() {return address;}
     public String getLongitude() {return longitude;}
-    public String getLangitude() {return langitude;}
+    public String getLatitude() {return latitude;}
     public String getPhone() {return phone;}
     public String getUrl() {return url;}
     public Boolean getParking() {return parking;}

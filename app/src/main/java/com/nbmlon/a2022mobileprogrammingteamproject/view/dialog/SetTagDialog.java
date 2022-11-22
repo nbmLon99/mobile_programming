@@ -21,7 +21,7 @@ public class SetTagDialog extends Dialog {
 
     public SetTagDialog(@NonNull Context context) {
         super(context);
-        setContentView(R.layout.layout_dialog_tag);
+        setContentView(R.layout.dialog_tag_set);
         setCancelable(false);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
