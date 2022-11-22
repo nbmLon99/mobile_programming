@@ -2,12 +2,14 @@ package com.nbmlon.a2022mobileprogrammingteamproject.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
+import com.nbmlon.a2022mobileprogrammingteamproject.view.dialog.SetTagDialog;
 
 public class PlaceInfoActivity extends AppCompatActivity {
     PlaceDTO mDstPlace;
@@ -29,6 +31,14 @@ public class PlaceInfoActivity extends AppCompatActivity {
 
         ((TextView)findViewById(R.id.detail_condition)).setText(" boolean에 맞게 표시할 영역입니다. ");
 
+
+        findViewById(R.id.detail_btn_setTag).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetTagDialog dialog = new SetTagDialog(getBaseContext());
+                dialog.show();
+            }
+        });
     }
 
 

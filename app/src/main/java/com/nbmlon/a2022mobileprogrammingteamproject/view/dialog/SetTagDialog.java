@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.view.adapter.TagAdapter;
 
+import java.util.ArrayList;
+
 public class SetTagDialog extends Dialog {
     public SetTagDialog(@NonNull Context context) {
         super(context);
@@ -25,12 +27,14 @@ public class SetTagDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ((RecyclerView)findViewById(R.id.rv_tag_dialog)).setAdapter(new TagAdapter(new ArrayList<>()));
+
 
         // Room에 올리고(해당 태그에 장소 id 저장하는 방식) Dialog Dismiss
         findViewById(R.id.btn_set_tag_done).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((RecyclerView) findViewById(R.id.rv_tag_setting)).setAdapter(new TagAdapter());
+                ((RecyclerView) findViewById(R.id.rv_tag_setting)).setAdapter(new TagAdapter(new ArrayList<>()));
 
                 SetTagDialog.this.dismiss();
             }

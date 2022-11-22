@@ -11,6 +11,10 @@ import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.view.adapter.TagAdapter;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class SearchActivity_Tag extends AppCompatActivity {
     PlaceViewModel placeViewModel = new PlaceViewModel();
 
@@ -21,7 +25,7 @@ public class SearchActivity_Tag extends AppCompatActivity {
 
         //tag list rv연결
         RecyclerView rv = findViewById(R.id.rv_tag_search);
-        rv.setAdapter(new TagAdapter());
+        rv.setAdapter(new TagAdapter(new ArrayList<>()));
 
 
         //검색시작
