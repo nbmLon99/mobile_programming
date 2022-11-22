@@ -99,4 +99,18 @@ public class PlaceDTO implements Parcelable {
             return new PlaceDTO[size];
         }
     };
+
+    public String getId() {return id;}
+    public String getName() {return name;}
+    public String getCity() {return city;}
+    public String getAddress() {return address;}
+    public String getLongitude() {return longitude;}
+    public String getLangitude() {return langitude;}
+    public String getPhone() {return phone;}
+    public String getUrl() {return url;}
+    public Boolean getParking() {return parking;}
+    public Boolean getStorage() {return storage;}
+    public Boolean getInfantHolder() {return infantHolder;}
+    public Boolean getWheelChair() {return wheelChair;}
+    public Boolean getPointRoad() {return pointRoad;}
 }
