@@ -2,7 +2,6 @@ package com.nbmlon.a2022mobileprogrammingteamproject.view.adapter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.nfc.Tag;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
-import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
     private int recyclerID;
-    private Set<String> selectedTagIds_for_search;
+    private Set<String> checkedTagIDs;
     private ArrayList<TagDTO> items;
 
     public TagAdapter(ArrayList<TagDTO> items){
@@ -71,8 +68,10 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             String dstID = items.get(position).id;
-                            if(isChecked){selectedTagIds_for_search.add(dstID);}
-                            else{selectedTagIds_for_search.remove(dstID);}
+                            if(isChecked){
+                                checkedTagIDs.add(dstID);}
+                            else{
+                                checkedTagIDs.remove(dstID);}
                         }
                     });
                     return;
@@ -127,14 +126,14 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
     }
 
 
 
-    public Set<String> getSelectedTagIds_for_search() {
+    public Set<String> getCheckedTagIDs_for_search() {
         if(recyclerID == R.id.rv_tag_search)
-            return selectedTagIds_for_search ;
+            return checkedTagIDs;
         else
             return null;
     }

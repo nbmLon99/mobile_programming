@@ -14,8 +14,11 @@ import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.view.adapter.TagAdapter;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class SetTagDialog extends Dialog {
+    RecyclerView rv;
+
     public SetTagDialog(@NonNull Context context) {
         super(context);
         setContentView(R.layout.layout_dialog_tag);
@@ -27,15 +30,15 @@ public class SetTagDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ((RecyclerView)findViewById(R.id.rv_tag_dialog)).setAdapter(new TagAdapter(new ArrayList<>()));
+        rv = ((RecyclerView)findViewById(R.id.rv_tag_dialog));
+        rv.setAdapter(new TagAdapter(new ArrayList<>()));
 
 
         // Room에 올리고(해당 태그에 장소 id 저장하는 방식) Dialog Dismiss
         findViewById(R.id.btn_set_tag_done).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((RecyclerView) findViewById(R.id.rv_tag_setting)).setAdapter(new TagAdapter(new ArrayList<>()));
-
+                Set<String> tagIDs = ((TagAdapter) rv.getAdapter()).getCheckedTagIDs_for_search();
                 SetTagDialog.this.dismiss();
             }
         });
