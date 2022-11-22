@@ -1,23 +1,25 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.model;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.google.firebase.database.Exclude;
-import com.google.firebase.database.PropertyName;
+import com.google.firebase.firestore.Exclude;
+import com.google.firebase.firestore.IgnoreExtraProperties;
+
+import java.io.Serializable;
+
 
 @Entity
-public class PlaceDTO implements Parcelable {
+@IgnoreExtraProperties
+public class PlaceDTO implements Serializable {
     @Exclude
     @PrimaryKey
     private String id;
 
     @ColumnInfo(name = "name")
-    @PropertyName("name")
     private String name;
     @ColumnInfo(name = "city")
     private String city;
@@ -66,39 +68,23 @@ public class PlaceDTO implements Parcelable {
         pointRoad = tmpPointRoad == 0 ? null : tmpPointRoad == 1;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
-        dest.writeString(name);
-        dest.writeString(city);
-        dest.writeString(address);
-        dest.writeString(longitude);
-        dest.writeString(latitude);
-        dest.writeString(phone);
-        dest.writeString(url);
-        dest.writeByte((byte) (parking == null ? 0 : parking ? 1 : 2));
-        dest.writeByte((byte) (storage == null ? 0 : storage ? 1 : 2));
-        dest.writeByte((byte) (infantHolder == null ? 0 : infantHolder ? 1 : 2));
-        dest.writeByte((byte) (wheelChair == null ? 0 : wheelChair ? 1 : 2));
-        dest.writeByte((byte) (pointRoad == null ? 0 : pointRoad ? 1 : 2));
+    public PlaceDTO(){}
+
+    public PlaceDTO(String id, String name, String city, String address, String longitude, String latitude, String phone, String url, Boolean parking, Boolean storage, Boolean infantHolder, Boolean wheelChair, Boolean pointRoad) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.address = address;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.phone = phone;
+        this.url = url;
+        this.parking = parking;
+        this.storage = storage;
+        this.infantHolder = infantHolder;
+        this.wheelChair = wheelChair;
+        this.pointRoad = pointRoad;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<PlaceDTO> CREATOR = new Creator<PlaceDTO>() {
-        @Override
-        public PlaceDTO createFromParcel(Parcel in) {
-            return new PlaceDTO(in);
-        }
-
-        @Override
-        public PlaceDTO[] newArray(int size) {
-            return new PlaceDTO[size];
-        }
-    };
 
     public String getId() {return id;}
     public String getName() {return name;}
