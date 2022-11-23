@@ -4,10 +4,13 @@ import android.os.Parcel;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
+import com.google.firebase.firestore.PropertyName;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
@@ -20,53 +23,81 @@ public class PlaceDTO implements Serializable {
     private String id;
 
     @ColumnInfo(name = "name")
-    private String name;
+    @SerializedName("업체명")  //json deserialize
+    @PropertyName("업체명")   //firebase serialize
+    public String name;
+
     @ColumnInfo(name = "city")
-    private String city;
+    @SerializedName("시군구명")
+    @PropertyName("시군구명")
+    public String city;
 
     @ColumnInfo(name = "address")
-    private String address;
+    @PropertyName("주소")
+    public String address;
+
+    @Ignore
+    @Exclude
+    @SerializedName("도로명")
+    public String address_new1;
+
+    @Ignore
+    @Exclude
+    @SerializedName("도로명상세")
+    public String address_new2;
+
+    @Ignore
+    @Exclude
+    @SerializedName("읍면동명")
+    public String address_old1;
+
+    @Ignore
+    @Exclude
+    @SerializedName("번지")
+    public String address_old2;
 
     @ColumnInfo(name = "longitude")
-    private String longitude;
+    @SerializedName("경도")
+    @PropertyName("경도")
+    public String longitude;
+
     @ColumnInfo(name = "latitude")
-    private String latitude;
+    @SerializedName("위도")
+    @PropertyName("위도")
+    public String latitude;
+
     @ColumnInfo(name = "phone")
-    private String phone;
+    @SerializedName("전화번호")
+    @PropertyName("전화번호")
+    public String phone;
+
     @ColumnInfo(name = "url")
-    private String url;
+    @SerializedName("홈페이지주소")
+    @PropertyName("홈페이지주소")
+    public String url;
+
+
 
     @ColumnInfo(name = "parking")
-    private Boolean parking;
+    @SerializedName("주차가능여부")
+    @PropertyName("주차가능여부")
+    public String parking;
     @ColumnInfo(name = "storage")
-    private Boolean storage;
+    @SerializedName("물품보관함유무")
+    @PropertyName("물품보관함유무")
+    public String storage;
     @ColumnInfo(name = "infantHolder")
-    private Boolean infantHolder;
+    @SerializedName("유아거치대유무")
+    @PropertyName("유아거치대유무")
+    public String infantHolder;
     @ColumnInfo(name = "wheelChair")
-    private Boolean wheelChair;
+    @SerializedName("휠체어이동가능여부")
+    @PropertyName("휠체어이동가능여부")
+    public String wheelChair;
     @ColumnInfo(name = "pointRoad")
-    private Boolean pointRoad;
-
-    protected PlaceDTO(Parcel in) {
-        id = in.readString();
-        name = in.readString();
-        city = in.readString();
-        address = in.readString();
-        longitude = in.readString();
-        latitude = in.readString();
-        phone = in.readString();
-        url = in.readString();
-        byte tmpParking = in.readByte();
-        parking = tmpParking == 0 ? null : tmpParking == 1;
-        byte tmpStorage = in.readByte();
-        storage = tmpStorage == 0 ? null : tmpStorage == 1;
-        byte tmpInfantHolder = in.readByte();
-        infantHolder = tmpInfantHolder == 0 ? null : tmpInfantHolder == 1;
-        byte tmpWheelChair = in.readByte();
-        wheelChair = tmpWheelChair == 0 ? null : tmpWheelChair == 1;
-        byte tmpPointRoad = in.readByte();
-        pointRoad = tmpPointRoad == 0 ? null : tmpPointRoad == 1;
-    }
+    @SerializedName("점자유도로유무")
+    @PropertyName("점자유도로유무")
+    public String pointRoad;
 
     public PlaceDTO(){}
 
@@ -79,24 +110,26 @@ public class PlaceDTO implements Serializable {
         this.latitude = latitude;
         this.phone = phone;
         this.url = url;
-        this.parking = parking;
-        this.storage = storage;
-        this.infantHolder = infantHolder;
-        this.wheelChair = wheelChair;
-        this.pointRoad = pointRoad;
+        this.parking = (parking != null)?  ((parking)? "Y" : "N") : null;
+        this.storage = (storage != null)?  ((storage)? "Y" : "N") : null;
+        this.infantHolder = (infantHolder != null)?  ((infantHolder)? "Y" : "N") : null;
+        this.wheelChair = (wheelChair != null)?  ((wheelChair)? "Y" : "N") : null;
+        this.pointRoad = (pointRoad != null)?  ((pointRoad)? "Y" : "N") : null;
     }
 
-    public String getId() {return id;}
-    public String getName() {return name;}
-    public String getCity() {return city;}
-    public String getAddress() {return address;}
-    public String getLongitude() {return longitude;}
-    public String getLatitude() {return latitude;}
-    public String getPhone() {return phone;}
-    public String getUrl() {return url;}
-    public Boolean getParking() {return parking;}
-    public Boolean getStorage() {return storage;}
-    public Boolean getInfantHolder() {return infantHolder;}
-    public Boolean getWheelChair() {return wheelChair;}
-    public Boolean getPointRoad() {return pointRoad;}
+    /** Convert "Y" = true , "N" = false, null = null **/
+    public Boolean getConditionBoolean(String string){
+        return (string != null)?  ((string=="Y")? true : false) : null;
+    }
+
+    /** Get Full Address From PlaceDTO **/
+    public String getAddress(){
+        String result= "부산광역시 " + this.city + " ";
+        if(this.address_new1 != null)
+            result += this.address_new1 + " " + this.address_new2;
+        else
+            result += this.address_old1 + " " + this.address_old2 ;
+
+        return result;
+    }
 }

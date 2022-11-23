@@ -23,6 +23,7 @@ public class PlaceInfoActivity extends AppCompatActivity {
         mDstPlace = intent.getBundleExtra("placeInfo").getParcelable("placeDTO");
 
         //mDstPlace에 맞게 text binding
+        /*
         ((TextView)findViewById(R.id.detail_name)).setText(mDstPlace.getName());
         ((TextView)findViewById(R.id.detail_address)).setText(mDstPlace.getAddress());
         ((TextView)findViewById(R.id.detail_city)).setText(mDstPlace.getCity());
@@ -31,6 +32,8 @@ public class PlaceInfoActivity extends AppCompatActivity {
 
         ((TextView)findViewById(R.id.detail_condition)).setText(" boolean에 맞게 표시할 영역입니다. ");
 
+
+         */
 
         findViewById(R.id.detail_btn_setTag).setOnClickListener(new View.OnClickListener() {
             @Override

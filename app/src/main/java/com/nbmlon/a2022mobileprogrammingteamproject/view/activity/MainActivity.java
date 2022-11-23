@@ -7,23 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.view.MyMapView;
+import com.nbmlon.a2022mobileprogrammingteamproject.view.backend.JsonUploading;
+import com.nbmlon.a2022mobileprogrammingteamproject.view.utils.Utils;
 
-import net.daum.mf.map.api.MapView;
+import org.json.JSONObject;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -37,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        dateGetTest();
-
-
 
 
         ((Button)findViewById(R.id.btn_side_menu)).setOnClickListener(new View.OnClickListener() {
@@ -92,25 +87,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void dataUploadingTest(){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Location")
-                .add(new PlaceDTO("","","","","","","","",true,true,true,true,true));
+
+
+
+
+
+
+
+    /** Used For uploading JSONFILE TO FIRESTORE **/
+    private void UploadJsonTO_Firestore(){
+        List<PlaceDTO> places =  JsonUploading.getJSONitems(get_JSON_fileString_FromFile("output.json"));
+        JsonUploading.upload(places);
 
     }
-
-    private void dateGetTest(){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Location")
-                .document("OnIJRzne7HsI7m4NGjPW")
-                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        Log.d("PlacDTO",documentSnapshot.toObject(PlaceDTO.class).getCity());
-                    }
-                });
-
-
-
+    /** Load JSONSTRING From File - Used For Uploading **/
+    private String get_JSON_fileString_FromFile(String assetFilename){
+        return Utils.getJsonFromAssets(getApplicationContext(), assetFilename);
     }
+
 }
