@@ -7,7 +7,7 @@
 
     android:orientation = "vertical"
     tools:context=".view.PlaceInfoActivity">
-=======
+
     tools:context=".view.activity.PlaceInfoActivity">
     <TextView
         android:id="@+id/detail_name"
