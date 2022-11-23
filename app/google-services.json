@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "354897446642",
+    "project_id": "logical-essence-368606",
+    "storage_bucket": "logical-essence-368606.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354897446642:android:b28fc4c460579effddb26b",
+        "android_client_info": {
+          "package_name": "com.nbmlon.a2022mobileprogrammingteamproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354897446642-i4jp333086i3uft24m74ui7igpsn83ba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3lLT1BL2kQIAvmFGhiyWWv5dWTbbe9R0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354897446642-i4jp333086i3uft24m74ui7igpsn83ba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

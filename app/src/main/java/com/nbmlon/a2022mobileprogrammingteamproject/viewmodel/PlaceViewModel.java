@@ -1,15 +1,22 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.viewmodel;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 
+import java.util.List;
+import java.util.Set;
+
 public class PlaceViewModel extends ViewModel {
 
-    public final MutableLiveData<PlaceDTO> placeMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<PlaceDTO>> placeMutableLiveData = new MutableLiveData<List<PlaceDTO>>();
+    public LiveData<List<PlaceDTO>> getPlaces() {return  placeMutableLiveData;}
 
-    public PlaceViewModel() {
+
+
+    private PlaceViewModel() {
         // trigger user load.
     }
 
@@ -28,7 +35,7 @@ public class PlaceViewModel extends ViewModel {
     }
 
     /** startSearch within Room - for SearchActtivity_Tag **/
-    public void searchForTags(int[] ids){
+    public void searchForTags(Set<String> ids){
 
     }
 

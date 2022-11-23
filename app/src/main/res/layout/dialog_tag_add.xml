@@ -2,23 +2,19 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tv_tag"
+
+    <EditText
+        android:id="@+id/add_tag_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/add_tag_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/add_tag_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <RadioButton
-        android:id="@+id/rb_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:visibility="gone"
-        />
 
-    <Button
-        android:id="@+id/btn_delete_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        />
 </FrameLayout>
