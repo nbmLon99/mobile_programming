@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.SearchActivity_Condition">
+    tools:context=".view.activity.SearchActivity_Condition">
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,6 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
+
+
     <RadioGroup
         android:id="@+id/parking_group"
         android:layout_width="wrap_content"
@@ -28,9 +30,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <RadioButton
-            android:id="@+id/parking_exclude"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:checked="true"
+            />
     </RadioGroup>
 
     <RadioGroup
@@ -47,9 +50,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <RadioButton
-            android:id="@+id/storage_exclude"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:checked="true"
+            />
     </RadioGroup>
 
     <RadioGroup
@@ -66,9 +70,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <RadioButton
-            android:id="@+id/infantHolder_exclude"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:checked="true"
+            />
     </RadioGroup>
     <RadioGroup
         android:id="@+id/wheelChair_group"
@@ -84,9 +89,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <RadioButton
-            android:id="@+id/wheelChair_exclude"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:checked="true"
+            />
     </RadioGroup>
 
     <RadioGroup
@@ -103,9 +109,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <RadioButton
-            android:id="@+id/pointRoad_exclude"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:checked="true"
+            />
     </RadioGroup>
 
     <Button

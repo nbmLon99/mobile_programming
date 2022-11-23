@@ -1,8 +1,8 @@
-package com.nbmlon.a2022mobileprogrammingteamproject.view;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.nbmlon.a2022mobileprogrammingteamproject.view.activity;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 
