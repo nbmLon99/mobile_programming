@@ -8,14 +8,13 @@
     android:orientation="vertical"
     tools:context=".view.MainActivity"
     >
-    
+
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
+        android:layout_width="119dp"
         android:layout_height="match_parent"
-        android:layout_gravity="left"
-        />
+        android:layout_gravity="left" />
 
-
+g
     <RelativeLayout
         android:id="@+id/mapview"
         android:layout_weight="0.8"
