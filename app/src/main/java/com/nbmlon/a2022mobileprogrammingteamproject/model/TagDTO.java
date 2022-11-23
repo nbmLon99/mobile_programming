@@ -12,4 +12,7 @@ public class TagDTO {
     @ColumnInfo(name = "name")
     public String name;
 
+    @ColumnInfo(name = "placeIds")
+    public String[] place_ids;
+
 }

@@ -2,17 +2,27 @@ package com.nbmlon.a2022mobileprogrammingteamproject.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
+import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.view.MyMapView;
+import com.nbmlon.a2022mobileprogrammingteamproject.view.backend.JsonUploading;
+import com.nbmlon.a2022mobileprogrammingteamproject.view.utils.Utils;
 
-import net.daum.mf.map.api.MapView;
+import org.json.JSONObject;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        ((Button)findViewById(R.id.btn_side_menu)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((DrawerLayout)findViewById(R.id.rootLayout)).openDrawer(findViewById(R.id.side_menu));
+            }
+        });
 
     }
 
@@ -67,4 +85,24 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+
+
+
+
+
+
+
+
+    /** Used For uploading JSONFILE TO FIRESTORE **/
+    private void UploadJsonTO_Firestore(){
+        List<PlaceDTO> places =  JsonUploading.getJSONitems(get_JSON_fileString_FromFile("output.json"));
+        JsonUploading.upload(places);
+
+    }
+    /** Load JSONSTRING From File - Used For Uploading **/
+    private String get_JSON_fileString_FromFile(String assetFilename){
+        return Utils.getJsonFromAssets(getApplicationContext(), assetFilename);
+    }
+
 }

@@ -9,6 +9,7 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
@@ -19,8 +20,7 @@ public class SearchActivity_Condition extends AppCompatActivity {
     static final int CHECKED_NONE = 202;
 
     RadioGroup parkingGroup, storageGroup, infantGroup, wheelGroup, pointRoadGroup;
-
-    PlaceViewModel placeViewModel = new PlaceViewModel();
+    PlaceViewModel placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
