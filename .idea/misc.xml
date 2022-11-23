@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_main.xml" value="0.3098958333333333" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_place_info.xml" value="0.14918946301925026" />
         <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_search_condition.xml" value="0.14918946301925026" />
         <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_search_tag.xml" value="0.14918946301925026" />
@@ -11,8 +11,10 @@
         <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_spinner_area.xml" value="0.3098958333333333" />
         <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_tag_list.xml" value="0.3098958333333333" />
         <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_tag_selectable.xml" value="0.3098958333333333" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_tag_setting_control.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/layout_dialog_tag.xml" value="0.3098958333333333" />
         <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/layout_menu.xml" value="0.18" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_main.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_main2.xml" value="0.1" />
         <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_place_info.xml" value="0.1" />
