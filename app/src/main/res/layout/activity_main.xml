@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="left" />
 
-g
+
     <RelativeLayout
         android:id="@+id/mapview"
         android:layout_weight="0.8"
@@ -26,6 +26,8 @@ g
         android:layout_height="0dp"
         android:layout_margin="40dp"
         android:background="@color/black" />
+
+
 
     <!-- Button ? 추가 -->
     <FrameLayout
@@ -35,21 +37,38 @@ g
         >
     </FrameLayout>
 
-
+    <!--search condition 버튼이랑 search tag 버튼을 하나로 -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_open_search_condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:fabSize = "mini"
+        android:layout_margin="16dp"
         />
+        <!--android:src="@drawable/ic_my_icon" 추후 그림 넣기 위함-->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_open_search_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:fabSize = "mini"
+        android:layout_margin="16dp"
+
         />
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_fab_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp" />
+        <!--android:src="@drawable/ic_my_icon" 추후 그림 넣기 위함-->
+
+
+
     <Button
         android:id="@+id/btn_side_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

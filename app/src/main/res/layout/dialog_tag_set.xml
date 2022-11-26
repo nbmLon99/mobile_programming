@@ -8,6 +8,12 @@
         android:layout_height="wrap_content"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text1"
+        android:textSize="32sp" />
+
     <Button
         android:id="@+id/btn_set_tag_done"
         android:layout_width="wrap_content"
