@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 
 /** Tag 추가/삭제 Activity **/
 public class SettingTagActivity extends AppCompatActivity implements SettingTagAdapter.TagRemovedCallback {
-    TagViewModel tagViewModel = new TagViewModel(getApplication());
+    TagViewModel tagViewModel = new ViewModelProvider(this).get(TagViewModel.class);
     SettingTagAdapter mAdapter;
 
     @Override

@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -17,8 +18,8 @@ public interface TagDAO {
     @Query("SELECT * FROM myTag WHERE id IN (:ids)")
     List<TagDTO> loadAllByIds(int[] ids);
 
-    @Insert
-    void insertAll(TagDTO... tags);
+    @Update
+    void update(TagDTO tag);
 
     @Insert
     void insert(TagDTO tag);

@@ -14,14 +14,15 @@ import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class TagSetAdapter extends RecyclerView.Adapter<TagSetAdapter.TagViewHolder> {
 
     private Set<String> checkedTagIDs;
-    private ArrayList<TagDTO> items;
+    private List<TagDTO> items;
 
-    public TagSetAdapter(ArrayList<TagDTO> items){
+    public TagSetAdapter(List<TagDTO> items){
         this.items = items;
     }
 

@@ -15,7 +15,7 @@ import java.util.List;
 public class TagRepositoy {
     private static TagRepositoy INSTANCE;
     private static TagDAO tagDAO;
-    private static MutableLiveData<List<TagDTO>> allContacts;
+    private static MutableLiveData<List<TagDTO>> allTags;
 
     private TagRepositoy(){}
 
@@ -23,22 +23,38 @@ public class TagRepositoy {
         INSTANCE = new TagRepositoy();
         MyRoomDatabase db = MyRoomDatabase.getDatabase(application);
         tagDAO = db.tagDao();
+        allTags.setValue(tagDAO.getAll());
     }
 
     public static TagRepositoy getInstance(){
         return INSTANCE;
     }
 
-
-    public LiveData<List<TagDTO>> getAllContacts() {
-        allContacts.setValue(tagDAO.getAll());
-        return allContacts;
+    public LiveData<List<TagDTO>> getAllTags() {
+        return allTags;
     }
 
 
     public void insert(TagDTO tag) {
         MyRoomDatabase.databaseWriteExecutor.execute(() -> {
             tagDAO.insert(tag);
+            List<TagDTO> tmp =allTags.getValue();
+            tmp.add(tag);
+            allTags.setValue(tmp);
+        });
+    }
+
+
+    /** Tag placeID 업데이트 **/
+    public void update(List<TagDTO> tags){
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
+            allTags.setValue(tags);
+            for (TagDTO tagDTO : tags){
+                if(tagDTO.place_ids.size() > 0)
+                    tagDAO.update(tagDTO);
+                else
+                    tagDAO.delete(tagDTO);
+            }
         });
     }
 

@@ -6,12 +6,19 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
+import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.placInfoActivity.dialog.SetTagDialog;
+import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.TagViewModel;
+
+import java.util.Collections;
+import java.util.List;
 
 public class PlaceInfoActivity extends AppCompatActivity {
+    TagViewModel tagViewModel = new ViewModelProvider(this).get(TagViewModel.class);
     PlaceDTO mDstPlace;
 
     @Override
@@ -34,7 +41,16 @@ public class PlaceInfoActivity extends AppCompatActivity {
         findViewById(R.id.detail_btn_setTag).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SetTagDialog dialog = new SetTagDialog(getBaseContext());
+                SetTagDialog dialog = new SetTagDialog(getBaseContext(), Collections.EMPTY_LIST, mDstPlace, new SetTagDialog.PlaceTaggedDoneCallback() {
+                    @Override
+                    public void TaggedDone(boolean updated, List<TagDTO> updatedTags) {
+                        if(updated){
+                            tagViewModel.update(updatedTags);
+                            //디테일 인포 수정 후 어뎁터 연결 -> 화면 표시
+
+                        }
+                    }
+                });
                 dialog.show();
             }
         });

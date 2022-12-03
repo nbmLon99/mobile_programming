@@ -11,19 +11,28 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
+import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
+import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class SetTagDialog extends Dialog {
+    PlaceTaggedDoneCallback placeTaggedDoneCallback;
     RecyclerView rv;
     TagSetAdapter mAdapter;
+    PlaceDTO mDstPlace;
+    List<TagDTO> mTags;
 
-    public SetTagDialog(@NonNull Context context) {
+    public SetTagDialog(@NonNull Context context, List<TagDTO> tags, PlaceDTO dstPlace, PlaceTaggedDoneCallback placeTaggedDoneCallback) {
         super(context);
         setContentView(R.layout.dialog_tag_set);
         setCancelable(false);
+        setTitle(dstPlace.name);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mTags = tags;
+        mDstPlace = dstPlace;
+        this.placeTaggedDoneCallback = placeTaggedDoneCallback;
     }
 
     @Override
@@ -32,7 +41,7 @@ public class SetTagDialog extends Dialog {
 
         rv = ((RecyclerView)findViewById(R.id.rv_tag_dialog));
         //태그목록 넣어야해
-        mAdapter = new TagSetAdapter((new ArrayList<>()));
+        mAdapter = new TagSetAdapter(mTags);
         rv.setAdapter(mAdapter);
 
 
@@ -40,10 +49,28 @@ public class SetTagDialog extends Dialog {
         findViewById(R.id.btn_set_tag_done).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Set<String> tagIDs = mAdapter.getCheckedTagIDs_for_search();
+                Set<String> checkedTagIDs = mAdapter.getCheckedTagIDs_for_search();
+                //tag별로 장소 업데이트
+                boolean updated = false;
+                for(TagDTO tag : mTags) {
+                    if (checkedTagIDs.contains(tag.id) && !tag.place_ids.contains(mDstPlace.id)) {
+                        tag.place_ids.add(mDstPlace.id);
+                        updated =true;
+                    }
+                    else if (!checkedTagIDs.contains(tag.id) && tag.place_ids.contains(mDstPlace.id)) {
+                        tag.place_ids.remove(mDstPlace.id);
+                        updated =true;
+                    }
+                }
+                placeTaggedDoneCallback.TaggedDone(updated, mTags);
+
                 SetTagDialog.this.dismiss();
             }
         });
 
+    }
+
+    public interface PlaceTaggedDoneCallback{
+        public void TaggedDone(boolean updated, List<TagDTO> updatedTags);
     }
 }

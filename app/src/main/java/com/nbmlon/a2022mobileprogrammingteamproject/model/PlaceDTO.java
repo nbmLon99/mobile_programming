@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class PlaceDTO implements Serializable {
     @Exclude
     @PrimaryKey
-    private String id;
+    public String id;
 
     @ColumnInfo(name = "name")
     @SerializedName("업체명")  //json deserialize
@@ -115,11 +115,6 @@ public class PlaceDTO implements Serializable {
         this.infantHolder = (infantHolder != null)?  ((infantHolder)? "Y" : "N") : null;
         this.wheelChair = (wheelChair != null)?  ((wheelChair)? "Y" : "N") : null;
         this.pointRoad = (pointRoad != null)?  ((pointRoad)? "Y" : "N") : null;
-    }
-
-    /** Convert "Y" = true , "N" = false, null = null **/
-    public Boolean getConditionBoolean(String string){
-        return (string != null)?  ((string=="Y")? true : false) : null;
     }
 
     /** Get Full Address From PlaceDTO **/

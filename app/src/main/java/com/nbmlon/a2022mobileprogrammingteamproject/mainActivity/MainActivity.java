@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK && requestCode == CALL_SEARCH_CONDITION){
-
+            //뷰모델에서 데이터 가져와서 지도에 띄우기
         }
         else if (resultCode == RESULT_OK && requestCode == CALL_SEARCH_TAG){
 

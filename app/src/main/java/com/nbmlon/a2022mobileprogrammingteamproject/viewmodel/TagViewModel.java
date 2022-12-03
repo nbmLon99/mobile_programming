@@ -12,19 +12,23 @@ import java.util.List;
 
 public class TagViewModel extends ViewModel {
     private TagRepositoy repository;
-    LiveData<List<TagDTO>> contacts;
 
-    public TagViewModel(final Application application) {
+    private TagViewModel() {
         super();
         repository = TagRepositoy.getInstance();
-        contacts = repository.getAllContacts();
     }
 
-    public LiveData<List<TagDTO>> getAllContacts() {
-        return contacts;
+    public LiveData<List<TagDTO>> getAllTags() {
+        return repository.getAllTags();
     }
 
-    public void insert(TagDTO contacts) {
-        repository.insert(contacts);
+    public void insert(TagDTO tag) {
+        repository.insert(tag);
+    }
+
+
+    /** Tag 업데이트 **/
+    public void update(List<TagDTO> tags){
+        repository.update(tags);
     }
 }

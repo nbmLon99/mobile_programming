@@ -18,10 +18,8 @@ public class PlaceViewModel extends ViewModel {
     PlaceRepository placeRepository = PlaceRepository.getINSTANCE();
 
     private MutableLiveData<List<PlaceDTO>> searchResultMutableLiveData = new MutableLiveData<List<PlaceDTO>>();
-    public LiveData<List<PlaceDTO>> getPlaces() {return  searchResultMutableLiveData;}
-
-
-
+    public LiveData<List<PlaceDTO>> searchResults() {return  searchResultMutableLiveData;}
+    
     private PlaceViewModel() {
         // trigger user load.
     }
