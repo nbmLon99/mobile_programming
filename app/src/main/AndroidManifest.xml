@@ -21,22 +21,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".view.activity.PlaceInfoActivity"
+            android:name=".placInfoActivity.PlaceInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SearchActivity_Condition"
+            android:name=".searchActivityCondition.SearchActivity_Condition"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SearchActivity_Tag"
+            android:name=".searchActivityTag.SearchActivity_Tag"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SettingTagActivity"
+            android:name=".settingTagActivity.SettingTagActivity"
             android:exported="false" />
 
         <uses-library android:name="com.google.android.maps" />
 
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name=".mainActivity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

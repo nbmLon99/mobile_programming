@@ -1,4 +1,4 @@
-package com.nbmlon.a2022mobileprogrammingteamproject.view.activity;
+package com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition;
 
 import android.os.Bundle;
 import android.view.View;
@@ -15,10 +15,6 @@ import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
 
 public class SearchActivity_Condition extends AppCompatActivity {
-    static final int CHECKED_TRUE = 200;
-    static final int CHECKED_FALSE = 201;
-    static final int CHECKED_NONE = 202;
-
     RadioGroup parkingGroup, storageGroup, infantGroup, wheelGroup, pointRoadGroup;
     PlaceViewModel placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
 
@@ -60,24 +56,24 @@ public class SearchActivity_Condition extends AppCompatActivity {
     }
 
 
-    private int getStatus(RadioGroup rg){
+    private String getStatus(RadioGroup rg){
         switch (rg.getCheckedRadioButtonId()){
             case R.id.parking_yes :
             case R.id.storage_yes :
             case R.id.infantHolder_yes:
             case R.id.wheelChair_yes:
             case R.id.pointRoad_yes:
-                return CHECKED_TRUE;
+                return "Y";
 
             case R.id.parking_no :
             case R.id.storage_no :
             case R.id.infantHolder_no :
             case R.id.wheelChair_no :
             case R.id.pointRoad_no :
-                return CHECKED_FALSE;
+                return "N";
 
             default:
-                return CHECKED_NONE;
+                return null;
         }
     }
 }

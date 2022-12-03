@@ -1,8 +1,7 @@
-package com.nbmlon.a2022mobileprogrammingteamproject.view.activity;
+package com.nbmlon.a2022mobileprogrammingteamproject.mainActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -11,16 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
-import com.nbmlon.a2022mobileprogrammingteamproject.view.MyMapView;
-import com.nbmlon.a2022mobileprogrammingteamproject.view.backend.JsonUploading;
-import com.nbmlon.a2022mobileprogrammingteamproject.view.utils.Utils;
-
-import org.json.JSONObject;
+import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition.SearchActivity_Condition;
+import com.nbmlon.a2022mobileprogrammingteamproject.myMap.MyMapView;
+import com.nbmlon.a2022mobileprogrammingteamproject.utils.JsonUploading;
+import com.nbmlon.a2022mobileprogrammingteamproject.utils.Utils;
 
 import java.util.List;
 

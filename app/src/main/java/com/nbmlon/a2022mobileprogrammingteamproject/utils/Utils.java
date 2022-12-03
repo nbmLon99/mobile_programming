@@ -1,4 +1,4 @@
-package com.nbmlon.a2022mobileprogrammingteamproject.view.utils;
+package com.nbmlon.a2022mobileprogrammingteamproject.utils;
 
 import android.content.Context;
 

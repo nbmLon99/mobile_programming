@@ -1,18 +1,33 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.model;
 
+import android.nfc.Tag;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 
-@Entity
+import com.nbmlon.a2022mobileprogrammingteamproject.utils.myTypeConverter;
+
+import java.util.Collections;
+import java.util.List;
+
+@Entity(tableName = "myTag")
 public class TagDTO {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public String id;
 
     @ColumnInfo(name = "name")
     public String name;
 
+    @TypeConverters(myTypeConverter.class)
     @ColumnInfo(name = "placeIds")
-    public String[] place_ids;
+    public List<String> place_ids = Collections.emptyList();
 
+
+    /** Add New TagDTO **/
+    public TagDTO(String name){
+        this.name = name;
+    }
 }

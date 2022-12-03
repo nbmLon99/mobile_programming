@@ -1,4 +1,4 @@
-package com.nbmlon.a2022mobileprogrammingteamproject.view.activity;
+package com.nbmlon.a2022mobileprogrammingteamproject.searchActivityTag;
 
 import android.os.Bundle;
 import android.view.View;
