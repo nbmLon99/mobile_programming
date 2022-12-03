@@ -7,9 +7,12 @@ buildscript {
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.13'
+<<<<<<< HEAD
         //implementation 'com.google.android.support:design:28.0.0'
         //implementation 'com.google.android.material:material:1.0.0-rc01'
         //testImplementation 'unit:junit:4+'
+=======
+>>>>>>> 7ba237fd92b8c93adb0587d0756357102f149720
     }
 }
 
