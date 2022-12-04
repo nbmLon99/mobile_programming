@@ -50,7 +50,7 @@ public class SetTagDialog extends Dialog {
         findViewById(R.id.btn_set_tag_done).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Set<String> checkedTagIDs = mAdapter.getCheckedTagIDs_for_search();
+                Set<Integer> checkedTagIDs = mAdapter.getCheckedTagIDs_for_search();
                 //tag별로 장소 업데이트
                 boolean updated = false;
                 for(TagDTO tag : mTags) {

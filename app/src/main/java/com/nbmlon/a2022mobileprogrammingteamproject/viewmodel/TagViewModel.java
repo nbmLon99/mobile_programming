@@ -13,7 +13,7 @@ import java.util.List;
 public class TagViewModel extends ViewModel {
     private TagRepositoy repository;
 
-    private TagViewModel() {
+    public TagViewModel() {
         super();
         repository = TagRepositoy.getInstance();
     }
