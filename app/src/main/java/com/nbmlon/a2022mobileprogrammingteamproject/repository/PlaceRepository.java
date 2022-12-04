@@ -1,14 +1,18 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.repository;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.FirebaseName;
 
 import java.util.Collections;
@@ -18,6 +22,8 @@ public class PlaceRepository {
     private PlaceRepository() {}
     private static FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private static PlaceRepository INSTANCE = null;
+    private static MutableLiveData<List<PlaceDTO>> searchResultMutableLiveData = new MutableLiveData<>();
+    public static LiveData<List<PlaceDTO>> getRepositoryResult() {return searchResultMutableLiveData; }
 
     public static void initialize() {
         INSTANCE = new PlaceRepository();
@@ -29,6 +35,26 @@ public class PlaceRepository {
         }
         return INSTANCE;
     }
+
+    public void searchPlaceFromID(List<String> ids, CompleteQueryCallback completeQueryCallback){
+        if(ids == null || ids.isEmpty()){
+            completeQueryCallback.QueryComplete(Collections.EMPTY_LIST);
+            return;
+        }
+
+        firestore.collection(FirebaseName.Collection.name)
+                .whereIn(FieldPath.documentId(), ids )
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            completeQueryCallback.QueryComplete(task.getResult().getDocuments());
+                        }
+                    }
+                });
+    }
+
 
     public void searchCondition(
             String area,
@@ -65,6 +91,14 @@ public class PlaceRepository {
                 }
             }
         });
+    }
+
+    public void resetLiveData(){
+        searchResultMutableLiveData = new MutableLiveData<>();
+    }
+
+    public void setLiveDataValue(List<PlaceDTO> placeDTOS){
+        searchResultMutableLiveData.setValue(placeDTOS);
     }
 
     public interface CompleteQueryCallback {

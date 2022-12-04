@@ -20,15 +20,15 @@ import java.util.List;
 import java.util.Set;
 
 public class PlaceViewModel extends ViewModel {
-    PlaceRepository placeRepository = PlaceRepository.getINSTANCE();
+    public PlaceRepository placeRepository = PlaceRepository.getINSTANCE();
 
-    private MutableLiveData<List<PlaceDTO>> searchResultMutableLiveData = new MutableLiveData<List<PlaceDTO>>();
-    public LiveData<List<PlaceDTO>> searchResults() {return  searchResultMutableLiveData;}
-    
     public PlaceViewModel() {
         // trigger user load.
     }
 
+    public LiveData<List<PlaceDTO>> getResultLiveData(){
+        return placeRepository.getRepositoryResult();
+    }
 
     /** startSearch within Firebase - for SearchActivity_Condition **/
     public void searchForCondition(
@@ -51,10 +51,7 @@ public class PlaceViewModel extends ViewModel {
                                 for (DocumentSnapshot dc : documentSnapshots){
                                     results.add( dc.toObject(PlaceDTO.class) );
                                 }
-                                Log.d("Result 결과", results.toString());
-                                Log.d("document 결과",  Integer.toString(documentSnapshots.size()) );
-
-                                searchResultMutableLiveData.setValue(results);
+                                placeRepository.setLiveDataValue(results);
                             }
                 });
             }
@@ -65,6 +62,11 @@ public class PlaceViewModel extends ViewModel {
     /** startSearch within Room - for SearchActtivity_Tag **/
     public void searchForTags(Set<Integer> ids){
 
+    }
+
+
+    public void resetPlaceResults(){
+        placeRepository.resetLiveData();
     }
 
 

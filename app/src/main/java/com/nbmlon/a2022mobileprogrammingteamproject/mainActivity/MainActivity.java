@@ -4,15 +4,14 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -24,14 +23,15 @@ import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityTag.SearchActi
 import com.nbmlon.a2022mobileprogrammingteamproject.settingTagActivity.SettingTagActivity;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.JsonUploading;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.Utils;
+import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
 
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    final static int CALL_SEARCH_CONDITION = 101;
-    final static int CALL_SEARCH_TAG = 102;
-
+    public final static int CALL_SEARCH_CONDITION = 101;
+    public final static int CALL_SEARCH_TAG = 102;
+    private PlaceViewModel placeViewModel;
     private MyMapView mapView;
     private Boolean isFabOpen = false;
 
@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setFloatingButtonOnClick();
         setSideMenu();
+
+        placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
     }
 
     private void mapViewInitialize() {
@@ -108,10 +110,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == CALL_SEARCH_CONDITION){
+        if(resultCode == CALL_SEARCH_CONDITION){
+            Log.d("받아온결과 검색개수", Integer.toString(placeViewModel.getResultLiveData().getValue().size()) );
             //뷰모델에서 데이터 가져와서 지도에 띄우기
+            //데이터 지워야함
         }
-        else if (resultCode == RESULT_OK && requestCode == CALL_SEARCH_TAG){
+        else if (resultCode == CALL_SEARCH_TAG){
 
         }
     }

@@ -1,34 +1,67 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.viewmodel;
 
-import android.app.Application;
-
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
+import com.nbmlon.a2022mobileprogrammingteamproject.repository.PlaceRepository;
 import com.nbmlon.a2022mobileprogrammingteamproject.repository.TagRepositoy;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class TagViewModel extends ViewModel {
-    private TagRepositoy repository;
+    private PlaceRepository placeRepository = PlaceRepository.getINSTANCE();
+    public TagRepositoy tagRepository;
+    public MutableLiveData<List<PlaceDTO>> searchResultMutableLiveData = new MutableLiveData<>();
 
     public TagViewModel() {
         super();
-        repository = TagRepositoy.getInstance();
+        tagRepository = TagRepositoy.getInstance();
     }
 
     public LiveData<List<TagDTO>> getAllTags() {
-        return repository.getAllTags();
+        return tagRepository.getAllTags();
     }
 
     public void insert(TagDTO tag) {
-        repository.insert(tag);
+        tagRepository.insert(tag);
     }
 
 
     /** Tag 업데이트 **/
     public void update(List<TagDTO> tags){
-        repository.update(tags);
+        tagRepository.update(tags);
     }
+
+    public void searchForTags(Set<Integer> tagIDs) {
+        List<String> resultPlaceIDs = null;
+        if( tagRepository.getAllTags().getValue() != null ){
+            for (TagDTO tag : tagRepository.getAllTags().getValue() ){
+                if (tagIDs.contains(tag.id)){
+                    if( resultPlaceIDs != null)
+                        resultPlaceIDs.retainAll(tag.place_ids);
+                    else
+                        resultPlaceIDs = tag.place_ids;
+                }
+            }
+        }
+
+        placeRepository.searchPlaceFromID(resultPlaceIDs, new PlaceRepository.CompleteQueryCallback() {
+            @Override
+            public void QueryComplete(List<DocumentSnapshot> documentSnapshots) {
+                List<PlaceDTO> result = Collections.EMPTY_LIST;
+                for( DocumentSnapshot dc : documentSnapshots){
+                    result.add(dc.toObject(PlaceDTO.class));
+                }
+                searchResultMutableLiveData.setValue(result);
+            }
+        });
+
+    }
+
 }

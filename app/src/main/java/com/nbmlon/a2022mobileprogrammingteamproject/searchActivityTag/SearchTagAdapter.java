@@ -14,13 +14,14 @@ import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class SearchTagAdapter extends RecyclerView.Adapter<SearchTagAdapter.TagViewHolder>{
     private Set<Integer> checkedTagIDs;
-    private ArrayList<TagDTO> items;
+    private List<TagDTO> items;
 
-    public SearchTagAdapter(ArrayList<TagDTO> items){
+    public SearchTagAdapter(List<TagDTO> items){
         this.items = items;
     }
 

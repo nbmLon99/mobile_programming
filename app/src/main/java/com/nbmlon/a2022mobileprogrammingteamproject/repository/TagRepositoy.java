@@ -10,12 +10,13 @@ import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDAO;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.MyRoomDatabase;
 
+import java.util.Collections;
 import java.util.List;
 
 public class TagRepositoy {
     private static TagRepositoy INSTANCE;
     private static TagDAO tagDAO;
-    private static MutableLiveData<List<TagDTO>> allTags;
+    public static MutableLiveData<List<TagDTO>> allTags = new MutableLiveData<>(Collections.EMPTY_LIST);
 
     private TagRepositoy(){}
 

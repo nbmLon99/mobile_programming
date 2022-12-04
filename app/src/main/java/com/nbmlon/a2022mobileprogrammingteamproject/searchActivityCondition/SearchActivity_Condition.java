@@ -1,26 +1,19 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.dialog.LoadingDialog;
+import com.nbmlon.a2022mobileprogrammingteamproject.mainActivity.MainActivity;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
 
@@ -52,6 +45,8 @@ public class SearchActivity_Condition extends AppCompatActivity implements Lifec
         findViewById(R.id.btn_start_search_condition).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                placeViewModel.resetPlaceResults();
+
                 //로딩뷰 띄우기
                 LoadingDialog loadingDialog = new LoadingDialog(SearchActivity_Condition.this, "검색중");
                 loadingDialog.show();
@@ -64,12 +59,12 @@ public class SearchActivity_Condition extends AppCompatActivity implements Lifec
                         getStatus(pointRoadGroup)
                 );
 
-                placeViewModel.searchResults().observe((LifecycleOwner) SearchActivity_Condition.this, new Observer<List<PlaceDTO>>() {
+                placeViewModel.getResultLiveData().observe((LifecycleOwner) SearchActivity_Condition.this, new Observer<List<PlaceDTO>>() {
                     @Override
                     public void onChanged(List<PlaceDTO> placeDTOS) {
                         //observe 한다음 검색 다 되면 로딩뷰 지우고 finish
-                        Log.d("result", placeViewModel.searchResults().toString());
                         loadingDialog.dismiss();
+                        setResult(MainActivity.CALL_SEARCH_CONDITION);
                         SearchActivity_Condition.this.finish();
                     }
                 });
