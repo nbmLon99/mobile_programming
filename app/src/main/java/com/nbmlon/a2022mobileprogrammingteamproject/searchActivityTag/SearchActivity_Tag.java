@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nbmlon.a2022mobileprogrammingteamproject.MyApplication;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.dialog.LoadingDialog;
+import com.nbmlon.a2022mobileprogrammingteamproject.mainActivity.MainActivity;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
@@ -54,11 +55,12 @@ public class SearchActivity_Tag extends AppCompatActivity {
 
                 Set<Integer> tagIDs = mAdapter.getCheckedTagIDs_for_search();
                 tagViewModel.searchForTags(tagIDs);
-                tagViewModel.searchResultMutableLiveData.observe(SearchActivity_Tag.this, new Observer<List<PlaceDTO>>() {
+                tagViewModel.getSearchResult().observe(SearchActivity_Tag.this, new Observer<List<PlaceDTO>>() {
                     @Override
                     public void onChanged(List<PlaceDTO> placeDTOS) {
                         Log.d("검색완료", placeDTOS.toString());
                         loadingDialog.dismiss();
+                        setResult(MainActivity.RETURN_SEARCH_TAG);
                         SearchActivity_Tag.this.finish();
                     }
                 });

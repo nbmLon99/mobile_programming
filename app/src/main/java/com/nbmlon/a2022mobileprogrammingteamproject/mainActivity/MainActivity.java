@@ -25,14 +25,21 @@ import com.nbmlon.a2022mobileprogrammingteamproject.settingTagActivity.SettingTa
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.JsonUploading;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.Utils;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
+import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.TagViewModel;
 
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    public final static int CALL_SEARCH_CONDITION = 101;
-    public final static int CALL_SEARCH_TAG = 102;
+    private final static int CALL_SEARCH_CONDITION = 101;
+    private final static int CALL_SEARCH_TAG = 102;
+    public final static int RETURN_SEARCH_CONDITION = 103;
+    public final static int RETURN_SEARCH_TAG = 104;
+
+
     private PlaceViewModel placeViewModel;
+    private TagViewModel tagViewModel;
+
     private MyMapView mapView;
     private Boolean isFabOpen = false;
 
@@ -49,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         setFloatingButtonOnClick();
         setSideMenu();
 
+        tagViewModel = new ViewModelProvider(this).get(TagViewModel.class);
         placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
     }
 
@@ -113,12 +121,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == CALL_SEARCH_CONDITION){
+        if(resultCode == RETURN_SEARCH_CONDITION){
             Log.d("받아온결과 검색개수", Integer.toString(placeViewModel.getResultLiveData().getValue().size()) );
             //뷰모델에서 데이터 가져와서 지도에 띄우기
             //데이터 지워야함
         }
-        else if (resultCode == CALL_SEARCH_TAG){
+        else if (resultCode == RETURN_SEARCH_TAG){
+            //뷰모델에서 데이터 가져와서 지도에 띄우기
+            Log.d("받아온결과 검색개수", Integer.toString(tagViewModel.getSearchResult().getValue().size()) );
 
         }
     }

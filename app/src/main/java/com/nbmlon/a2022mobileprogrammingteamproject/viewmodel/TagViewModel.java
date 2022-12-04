@@ -17,12 +17,17 @@ import java.util.Set;
 public class TagViewModel extends ViewModel {
     private PlaceRepository placeRepository = PlaceRepository.getINSTANCE();
     public TagRepositoy tagRepository = TagRepositoy.getInstance();
-    public MutableLiveData<List<PlaceDTO>> searchResultMutableLiveData = new MutableLiveData<>();
 
     public TagViewModel() {}
 
+    /** LiveData For AllTag **/
     public LiveData<List<TagDTO>> getAllTags() {
         return tagRepository.getAllTags();
+    }
+
+    /** LiveData For TagSearching **/
+    public LiveData<List<PlaceDTO>> getSearchResult(){
+        return placeRepository.getRepositoryTagResult();
     }
 
     public void insert(TagDTO tag) {
@@ -46,16 +51,7 @@ public class TagViewModel extends ViewModel {
             }
         }
 
-        placeRepository.searchPlaceFromID(resultPlaceIDs, new PlaceRepository.CompleteQueryCallback() {
-            @Override
-            public void QueryComplete(List<DocumentSnapshot> documentSnapshots) {
-                List<PlaceDTO> result = Collections.EMPTY_LIST;
-                for( DocumentSnapshot dc : documentSnapshots){
-                    result.add(dc.toObject(PlaceDTO.class));
-                }
-                searchResultMutableLiveData.setValue(result);
-            }
-        });
+        placeRepository.searchPlaceFromID(resultPlaceIDs);
     }
 
 

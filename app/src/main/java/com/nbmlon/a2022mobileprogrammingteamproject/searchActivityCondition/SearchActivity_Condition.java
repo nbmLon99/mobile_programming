@@ -20,8 +20,8 @@ import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
 import java.util.List;
 
 public class SearchActivity_Condition extends AppCompatActivity implements LifecycleOwner {
-    RadioGroup parkingGroup, storageGroup, infantGroup, wheelGroup, pointRoadGroup;
-    PlaceViewModel placeViewModel;
+    private RadioGroup parkingGroup, storageGroup, infantGroup, wheelGroup, pointRoadGroup;
+    private PlaceViewModel placeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class SearchActivity_Condition extends AppCompatActivity implements Lifec
                     public void onChanged(List<PlaceDTO> placeDTOS) {
                         //observe 한다음 검색 다 되면 로딩뷰 지우고 finish
                         loadingDialog.dismiss();
-                        setResult(MainActivity.CALL_SEARCH_CONDITION);
+                        setResult(MainActivity.RETURN_SEARCH_CONDITION);
                         SearchActivity_Condition.this.finish();
                     }
                 });

@@ -18,7 +18,7 @@ public class PlaceViewModel extends ViewModel {
     }
 
     public LiveData<List<PlaceDTO>> getResultLiveData(){
-        return placeRepository.getRepositoryResult();
+        return placeRepository.getRepositoryConditionResult();
     }
 
     /** startSearch within Firebase - for SearchActivity_Condition **/
@@ -34,17 +34,7 @@ public class PlaceViewModel extends ViewModel {
         new Runnable() {
             @Override
             public void run() {
-                placeRepository.searchCondition("", parking, storage, infant, wheel, pointRoad,
-                        new PlaceRepository.CompleteQueryCallback() {
-                            @Override
-                            public void QueryComplete(List<DocumentSnapshot> documentSnapshots) {
-                                ArrayList<PlaceDTO> results = new ArrayList<>();
-                                for (DocumentSnapshot dc : documentSnapshots){
-                                    results.add( dc.toObject(PlaceDTO.class) );
-                                }
-                                placeRepository.setLiveDataValue(results);
-                            }
-                });
+                placeRepository.searchCondition("", parking, storage, infant, wheel, pointRoad);
             }
         }.run();
     }
