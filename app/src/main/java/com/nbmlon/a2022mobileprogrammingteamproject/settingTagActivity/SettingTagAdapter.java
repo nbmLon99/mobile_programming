@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioButton;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,21 +21,21 @@ public class SettingTagAdapter extends RecyclerView.Adapter<SettingTagAdapter.Ta
     private ArrayList<TagDTO> items;
     private TagRemovedCallback rc;
 
-    public SettingTagAdapter(ArrayList<TagDTO> items, TagRemovedCallback rc){
+    public SettingTagAdapter(ArrayList<TagDTO> items, TagRemovedCallback tagRemovedCallback){
         this.items = items;
-        this.rc = rc;
+        this.rc = tagRemovedCallback;
     }
 
 
     class TagViewHolder extends RecyclerView.ViewHolder{
         TextView tv_tag;
-        RadioButton rb_tag;
+        CheckBox ck_tag;
         Button btn_delete_tag;
 
         public TagViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_tag = itemView.findViewById(R.id.tv_tag);
-            rb_tag = itemView.findViewById(R.id.rb_tag);
+            ck_tag = itemView.findViewById(R.id.ck_tag);
             btn_delete_tag = itemView.findViewById(R.id.btn_delete_tag);
             btn_delete_tag.setVisibility(View.VISIBLE);
         }

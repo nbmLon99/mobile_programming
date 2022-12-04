@@ -61,6 +61,8 @@ public class SettingTagActivity extends AppCompatActivity implements SettingTagA
                         })
                         .setCancelable(true)
                         .create();
+
+                dialog.show();
             }
         });
     }

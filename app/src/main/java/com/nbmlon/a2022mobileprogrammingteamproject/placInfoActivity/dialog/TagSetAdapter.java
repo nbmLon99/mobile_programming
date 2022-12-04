@@ -3,6 +3,7 @@ package com.nbmlon.a2022mobileprogrammingteamproject.placInfoActivity.dialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -13,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -29,20 +29,20 @@ public class TagSetAdapter extends RecyclerView.Adapter<TagSetAdapter.TagViewHol
 
     class TagViewHolder extends RecyclerView.ViewHolder{
         TextView tv_tag;
-        RadioButton rb_tag;
+        CheckBox ck_tag;
 
         public TagViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_tag = itemView.findViewById(R.id.tv_tag);
-            rb_tag = itemView.findViewById(R.id.rb_tag);
-            rb_tag.setVisibility(View.VISIBLE);
+            ck_tag = itemView.findViewById(R.id.ck_tag);
+            ck_tag.setVisibility(View.VISIBLE);
 
         }
 
 
         private void bind(int position){
-            rb_tag.setVisibility(View.VISIBLE);
-            rb_tag.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            ck_tag.setVisibility(View.VISIBLE);
+            ck_tag.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     int dstID = items.get(position).id;

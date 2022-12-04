@@ -13,6 +13,7 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_tag_list"
+        tools:itemCount="6"
         />
 
 
