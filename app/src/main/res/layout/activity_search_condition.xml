@@ -61,7 +61,7 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true" />
+                    />
             </RadioGroup>
         </LinearLayout>
 
@@ -95,7 +95,7 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true" />
+                    />
 
             </RadioGroup>
         </LinearLayout>
@@ -129,7 +129,7 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true" />
+                    />
             </RadioGroup>
         </LinearLayout>
 
@@ -162,7 +162,7 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true" />
+                    />
             </RadioGroup>
         </LinearLayout>
 
@@ -196,7 +196,6 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     tools:layout_editor_absoluteX="48dp"
                     tools:layout_editor_absoluteY="211dp" />
 

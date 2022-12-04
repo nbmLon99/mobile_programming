@@ -16,7 +16,7 @@ public class LoadingDialog{
 
     public LoadingDialog(Context context) {
         View dialogView = LayoutInflater.from(context).inflate(R.layout.layout_loading, null);
-        dialogProgress =  new MaterialAlertDialogBuilder(context).setCancelable(false).setView(dialogView).create();
+        dialogProgress =  new AlertDialog.Builder(context).setCancelable(false).setView(dialogView).create();
         dialogProgress.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 

@@ -15,7 +15,12 @@
         android:id="@+id/side_menu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="top|left" />
+        android:layout_gravity="top|left" >
+        <include
+            layout="@layout/layout_menu"
+            />
+
+    </com.google.android.material.navigation.NavigationView>
 
 
     <RelativeLayout

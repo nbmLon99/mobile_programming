@@ -1,5 +1,7 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,6 +12,9 @@ import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.repository.PlaceRepository;
 import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition.SearchActivity_Condition;
 
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -20,7 +25,7 @@ public class PlaceViewModel extends ViewModel {
     private MutableLiveData<List<PlaceDTO>> searchResultMutableLiveData = new MutableLiveData<List<PlaceDTO>>();
     public LiveData<List<PlaceDTO>> searchResults() {return  searchResultMutableLiveData;}
     
-    private PlaceViewModel() {
+    public PlaceViewModel() {
         // trigger user load.
     }
 
@@ -38,14 +43,17 @@ public class PlaceViewModel extends ViewModel {
         new Runnable() {
             @Override
             public void run() {
-                placeRepository.searchCondition(area, parking, storage, infant, wheel, pointRoad,
+                placeRepository.searchCondition("", parking, storage, infant, wheel, pointRoad,
                         new PlaceRepository.CompleteQueryCallback() {
                             @Override
                             public void QueryComplete(List<DocumentSnapshot> documentSnapshots) {
-                                List<PlaceDTO> results = Collections.emptyList();
+                                ArrayList<PlaceDTO> results = new ArrayList<>();
                                 for (DocumentSnapshot dc : documentSnapshots){
                                     results.add( dc.toObject(PlaceDTO.class) );
                                 }
+                                Log.d("Result 결과", results.toString());
+                                Log.d("document 결과",  Integer.toString(documentSnapshots.size()) );
+
                                 searchResultMutableLiveData.setValue(results);
                             }
                 });

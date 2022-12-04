@@ -44,18 +44,18 @@ public class PlaceRepository {
         CollectionReference collection = firestore.collection(FirebaseName.Collection.name);
         Query query = collection;
 
-        if(area != null)
-            query = query.whereIn(FirebaseName.Field.area, Collections.singletonList(area));
+        if(!area.isEmpty())
+            query = query.whereEqualTo(FirebaseName.Field.area, area);
         if(parking != null)
-            query = query.whereIn(FirebaseName.Field.parking, Collections.singletonList(parking));
+            query = query.whereEqualTo(FirebaseName.Field.parking, parking);
         if(storage != null)
-            query = query.whereIn(FirebaseName.Field.storage, Collections.singletonList(storage));
+            query = query.whereEqualTo(FirebaseName.Field.storage, storage);
         if(infant != null)
-            query = query.whereIn(FirebaseName.Field.infant, Collections.singletonList(infant));
+            query = query.whereEqualTo(FirebaseName.Field.infant, infant);
         if(wheel != null)
-            query = query.whereIn(FirebaseName.Field.wheel, Collections.singletonList(wheel));
+            query = query.whereEqualTo(FirebaseName.Field.wheel, wheel);
         if(pointRoad != null)
-            query = query.whereIn(FirebaseName.Field.pointRoad, Collections.singletonList(pointRoad));
+            query = query.whereEqualTo(FirebaseName.Field.pointRoad, pointRoad);
 
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override

@@ -2,6 +2,7 @@ package com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,12 +28,13 @@ import java.util.List;
 
 public class SearchActivity_Condition extends AppCompatActivity implements LifecycleOwner {
     RadioGroup parkingGroup, storageGroup, infantGroup, wheelGroup, pointRoadGroup;
-    PlaceViewModel placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
+    PlaceViewModel placeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_condition);
+        placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
 
         //스피너 설정
         Spinner spinner =  findViewById(R.id.area_spinner);
@@ -66,6 +68,7 @@ public class SearchActivity_Condition extends AppCompatActivity implements Lifec
                     @Override
                     public void onChanged(List<PlaceDTO> placeDTOS) {
                         //observe 한다음 검색 다 되면 로딩뷰 지우고 finish
+                        Log.d("result", placeViewModel.searchResults().toString());
                         loadingDialog.dismiss();
                         SearchActivity_Condition.this.finish();
                     }
