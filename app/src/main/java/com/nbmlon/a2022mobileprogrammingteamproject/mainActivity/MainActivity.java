@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     MyMapView mapView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +57,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SearchActivity_Condition.class);
                 startActivityForResult(intent, CALL_SEARCH_CONDITION );
+
             }
         });
+
 
         // 태그검색 액티비티 호출
         findViewById(R.id.btn_open_search_tag).setOnClickListener(new View.OnClickListener() {
