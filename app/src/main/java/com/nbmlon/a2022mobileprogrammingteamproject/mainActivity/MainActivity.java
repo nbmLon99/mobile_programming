@@ -17,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
+import com.nbmlon.a2022mobileprogrammingteamproject.repository.TagRepositoy;
 import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition.SearchActivity_Condition;
 import com.nbmlon.a2022mobileprogrammingteamproject.myMap.MyMapView;
 import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityTag.SearchActivity_Tag;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TagRepositoy.initialize(getApplication());
+
         setContentView(R.layout.activity_main);
         setFloatingButtonOnClick();
         setSideMenu();

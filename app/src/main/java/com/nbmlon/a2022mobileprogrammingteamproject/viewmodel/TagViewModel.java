@@ -16,13 +16,10 @@ import java.util.Set;
 
 public class TagViewModel extends ViewModel {
     private PlaceRepository placeRepository = PlaceRepository.getINSTANCE();
-    public TagRepositoy tagRepository;
+    public TagRepositoy tagRepository = TagRepositoy.getInstance();
     public MutableLiveData<List<PlaceDTO>> searchResultMutableLiveData = new MutableLiveData<>();
 
-    public TagViewModel() {
-        super();
-        tagRepository = TagRepositoy.getInstance();
-    }
+    public TagViewModel() {}
 
     public LiveData<List<TagDTO>> getAllTags() {
         return tagRepository.getAllTags();

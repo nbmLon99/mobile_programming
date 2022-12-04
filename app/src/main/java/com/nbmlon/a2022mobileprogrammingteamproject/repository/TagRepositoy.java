@@ -21,10 +21,15 @@ public class TagRepositoy {
     private TagRepositoy(){}
 
     public static void initialize(Application application){
-        INSTANCE = new TagRepositoy();
-        MyRoomDatabase db = MyRoomDatabase.getDatabase(application);
-        tagDAO = db.tagDao();
-        allTags.setValue(tagDAO.getAll());
+        new Thread() {
+            @Override
+            public void run() {
+                INSTANCE = new TagRepositoy();
+                MyRoomDatabase db = MyRoomDatabase.getDatabase(application);
+                tagDAO = db.tagDao();
+                allTags.postValue(tagDAO.getAll());
+            }
+        }.start();
     }
 
     public static TagRepositoy getInstance(){
