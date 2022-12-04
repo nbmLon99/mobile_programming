@@ -28,13 +28,11 @@ public class TagViewModel extends ViewModel {
     public void insert(TagDTO tag) {
         tagRepository.insert(tag);
     }
+    public void delete(TagDTO tag){tagRepository.delete(tag);}
+    public void update(List<TagDTO> tags){tagRepository.update(tags);}
 
 
-    /** Tag 업데이트 **/
-    public void update(List<TagDTO> tags){
-        tagRepository.update(tags);
-    }
-
+    /** 태그로 검색 **/
     public void searchForTags(Set<Integer> tagIDs) {
         List<String> resultPlaceIDs = null;
         if( tagRepository.getAllTags().getValue() != null ){
@@ -58,7 +56,8 @@ public class TagViewModel extends ViewModel {
                 searchResultMutableLiveData.setValue(result);
             }
         });
-
     }
+
+
 
 }

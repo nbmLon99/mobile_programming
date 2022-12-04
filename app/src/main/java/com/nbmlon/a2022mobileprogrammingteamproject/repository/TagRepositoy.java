@@ -50,6 +50,20 @@ public class TagRepositoy {
         });
     }
 
+    public void delete(TagDTO tag) {
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
+            tagDAO.delete(tag);
+            List<TagDTO> tmp =allTags.getValue();
+            try {
+                tmp.remove(tag);
+                allTags.postValue(tmp);
+            }
+            catch (Exception e){
+                getAllTags();
+            }
+        });
+    }
+
 
     /** Tag placeID 업데이트 **/
     public void update(List<TagDTO> tags){
