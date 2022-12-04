@@ -209,6 +209,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
+        android:text="검색"
         android:layout_marginright="20dp"
         tools:layout_editor_absoluteX="307dp"
         tools:layout_editor_absoluteY="658dp" />
