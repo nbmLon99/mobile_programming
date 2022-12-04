@@ -1,4 +1,4 @@
-package com.nbmlon.a2022mobileprogrammingteamproject.view.dialog;
+package com.nbmlon.a2022mobileprogrammingteamproject.dialog;
 
 import android.content.Context;
 import android.graphics.Color;

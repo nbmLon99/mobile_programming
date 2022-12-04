@@ -1,5 +1,6 @@
-package com.nbmlon.a2022mobileprogrammingteamproject.view.activity;
+package com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -7,18 +8,24 @@ import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
+import com.nbmlon.a2022mobileprogrammingteamproject.dialog.LoadingDialog;
+import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
 
-public class SearchActivity_Condition extends AppCompatActivity {
-    static final int CHECKED_TRUE = 200;
-    static final int CHECKED_FALSE = 201;
-    static final int CHECKED_NONE = 202;
+import java.util.List;
 
+public class SearchActivity_Condition extends AppCompatActivity implements LifecycleOwner {
     RadioGroup parkingGroup, storageGroup, infantGroup, wheelGroup, pointRoadGroup;
     PlaceViewModel placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
 
@@ -43,6 +50,9 @@ public class SearchActivity_Condition extends AppCompatActivity {
         findViewById(R.id.btn_start_search_condition).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //로딩뷰 띄우기
+                LoadingDialog loadingDialog = new LoadingDialog(SearchActivity_Condition.this);
+                loadingDialog.show();
                 placeViewModel.searchForCondition(
                         spinner.getSelectedItem().toString(),
                         getStatus(parkingGroup),
@@ -51,33 +61,40 @@ public class SearchActivity_Condition extends AppCompatActivity {
                         getStatus(wheelGroup),
                         getStatus(pointRoadGroup)
                 );
-                //로딩뷰 띄우기
+
+                placeViewModel.searchResults().observe((LifecycleOwner) SearchActivity_Condition.this, new Observer<List<PlaceDTO>>() {
+                    @Override
+                    public void onChanged(List<PlaceDTO> placeDTOS) {
+                        //observe 한다음 검색 다 되면 로딩뷰 지우고 finish
+                        loadingDialog.dismiss();
+                        SearchActivity_Condition.this.finish();
+                    }
+                });
             }
         });
 
 
-        //observe 한다음 검색 다 되면 로딩뷰 지우고 finish
     }
 
 
-    private int getStatus(RadioGroup rg){
+    private String getStatus(RadioGroup rg){
         switch (rg.getCheckedRadioButtonId()){
             case R.id.parking_yes :
             case R.id.storage_yes :
             case R.id.infantHolder_yes:
             case R.id.wheelChair_yes:
             case R.id.pointRoad_yes:
-                return CHECKED_TRUE;
+                return "Y";
 
             case R.id.parking_no :
             case R.id.storage_no :
             case R.id.infantHolder_no :
             case R.id.wheelChair_no :
             case R.id.pointRoad_no :
-                return CHECKED_FALSE;
+                return "N";
 
             default:
-                return CHECKED_NONE;
+                return null;
         }
     }
 }

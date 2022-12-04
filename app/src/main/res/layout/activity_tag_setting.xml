@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.SettingTagActivity">
+    tools:context=".settingTagActivity.SettingTagActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_tag_setting"
