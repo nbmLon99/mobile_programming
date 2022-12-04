@@ -30,9 +30,10 @@ public class SetTagDialog extends Dialog {
         setCancelable(false);
         setTitle(dstPlace.name);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        this.placeTaggedDoneCallback = placeTaggedDoneCallback;
         mTags = tags;
         mDstPlace = dstPlace;
-        this.placeTaggedDoneCallback = placeTaggedDoneCallback;
     }
 
     @Override
