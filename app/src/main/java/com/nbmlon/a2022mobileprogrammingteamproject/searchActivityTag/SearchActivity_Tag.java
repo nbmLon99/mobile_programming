@@ -14,14 +14,14 @@ import java.util.ArrayList;
 import java.util.Set;
 
 public class SearchActivity_Tag extends AppCompatActivity {
-    PlaceViewModel placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
+    PlaceViewModel placeViewModel;
     SearchTagAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_tag);
-
+        placeViewModel =  new ViewModelProvider(this).get(PlaceViewModel.class);
         //tag list rv연결
         RecyclerView rv = findViewById(R.id.rv_tag_search);
         mAdapter = (new SearchTagAdapter(new ArrayList<>()));

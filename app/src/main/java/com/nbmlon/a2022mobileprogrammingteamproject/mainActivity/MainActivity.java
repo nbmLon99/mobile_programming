@@ -1,7 +1,9 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.mainActivity;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -10,10 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition.SearchActivity_Condition;
 import com.nbmlon.a2022mobileprogrammingteamproject.myMap.MyMapView;
+import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityTag.SearchActivity_Tag;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.JsonUploading;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.Utils;
 
@@ -25,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     final static int CALL_SEARCH_TAG = 102;
 
     MyMapView mapView;
+    Boolean isFabOpen = false;
+
+    FloatingActionButton mainFab, conditionFab, tagFab;
 
 
 
@@ -50,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setFloatingButtonOnClick(){
+        mainFab = findViewById(R.id.mainFab);
+        conditionFab = findViewById(R.id.btn_open_search_condition);
+        tagFab = findViewById(R.id.btn_open_search_tag);
+
+        mainFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleFAB();
+            }
+        });
 
         // 조건검색 액티비티 호출
         findViewById(R.id.btn_open_search_condition).setOnClickListener(new View.OnClickListener() {
@@ -66,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_open_search_tag).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity_Condition.class);
+                Intent intent = new Intent(MainActivity.this, SearchActivity_Tag.class);
                 startActivityForResult(intent, CALL_SEARCH_TAG );
             }
         });
@@ -84,6 +101,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    private void toggleFAB(){
+        if(isFabOpen){
+            ObjectAnimator.ofFloat(conditionFab,"translationY",0f).start();
+            ObjectAnimator.ofFloat(tagFab,"translationY",0f).start();
+            mainFab.setImageResource(R.drawable.ic_baseline_add_24);
+        } else{
+            ObjectAnimator.ofFloat(conditionFab,"translationY",-200f).start();
+            ObjectAnimator.ofFloat(tagFab,"translationY",-400f).start();
+            mainFab.setImageResource(R.drawable.ic_baseline_clear_24);
+        }
+        Log.d("isFabOpen",isFabOpen.toString());
+        isFabOpen = !isFabOpen;
+    }
 
 
 
