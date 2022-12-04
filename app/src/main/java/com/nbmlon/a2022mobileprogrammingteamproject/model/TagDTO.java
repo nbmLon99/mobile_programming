@@ -16,7 +16,7 @@ import java.util.List;
 @Entity(tableName = "myTag")
 public class TagDTO {
     @PrimaryKey(autoGenerate = true)
-    public String id;
+    public int id;
 
     @ColumnInfo(name = "name")
     public String name;

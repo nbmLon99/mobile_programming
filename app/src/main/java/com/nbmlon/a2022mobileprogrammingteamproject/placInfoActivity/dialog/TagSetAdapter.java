@@ -19,7 +19,7 @@ import java.util.Set;
 
 public class TagSetAdapter extends RecyclerView.Adapter<TagSetAdapter.TagViewHolder> {
 
-    private Set<String> checkedTagIDs;
+    private Set<Integer> checkedTagIDs;
     private List<TagDTO> items;
 
     public TagSetAdapter(List<TagDTO> items){
@@ -45,7 +45,7 @@ public class TagSetAdapter extends RecyclerView.Adapter<TagSetAdapter.TagViewHol
             rb_tag.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    String dstID = items.get(position).id;
+                    int dstID = items.get(position).id;
                     if (isChecked)
                         checkedTagIDs.add(dstID);
                     else
@@ -75,7 +75,7 @@ public class TagSetAdapter extends RecyclerView.Adapter<TagSetAdapter.TagViewHol
 
 
 
-    public Set<String> getCheckedTagIDs_for_search() {
+    public Set<Integer> getCheckedTagIDs_for_search() {
         return checkedTagIDs;
     }
 }

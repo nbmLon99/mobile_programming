@@ -23,7 +23,7 @@
         android:layout_gravity="bottom|right"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginright="20dp" />
+        android:layout_marginRight="20dp" />
 
 
 </FrameLayout>

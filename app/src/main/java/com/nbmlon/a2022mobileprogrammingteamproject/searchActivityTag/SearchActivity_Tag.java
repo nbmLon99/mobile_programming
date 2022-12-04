@@ -31,7 +31,7 @@ public class SearchActivity_Tag extends AppCompatActivity {
         findViewById(R.id.btn_start_search_tag).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Set<String> tagIDs = mAdapter.getCheckedTagIDs_for_search();
+                Set<Integer> tagIDs = mAdapter.getCheckedTagIDs_for_search();
                 placeViewModel.searchForTags(tagIDs);
                 //로딩 다이얼로그 띄우기
             }

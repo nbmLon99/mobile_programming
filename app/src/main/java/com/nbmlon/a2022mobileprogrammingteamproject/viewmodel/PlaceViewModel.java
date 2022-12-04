@@ -55,7 +55,7 @@ public class PlaceViewModel extends ViewModel {
 
 
     /** startSearch within Room - for SearchActtivity_Tag **/
-    public void searchForTags(Set<String> ids){
+    public void searchForTags(Set<Integer> ids){
 
     }
 
