@@ -110,9 +110,12 @@ public class PlaceRepository {
         });
     }
 
-    public void resetLiveData(){
-
+    public void resetConditionLiveData(){
         searchConditionResultMutableLiveData = new MutableLiveData<>();
+    }
+
+    public void resetTagLiveData(){
+        searchTagResultMutableLiveData = new MutableLiveData<>();
     }
 
 }

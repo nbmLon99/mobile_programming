@@ -125,11 +125,12 @@ public class MainActivity extends AppCompatActivity {
             Log.d("받아온결과 검색개수", Integer.toString(placeViewModel.getResultLiveData().getValue().size()) );
             //뷰모델에서 데이터 가져와서 지도에 띄우기
             //데이터 지워야함
+            placeViewModel.resetPlaceResults();
         }
         else if (resultCode == RETURN_SEARCH_TAG){
             //뷰모델에서 데이터 가져와서 지도에 띄우기
             Log.d("받아온결과 검색개수", Integer.toString(tagViewModel.getSearchResult().getValue().size()) );
-
+            tagViewModel.resetTagResults();
         }
     }
 

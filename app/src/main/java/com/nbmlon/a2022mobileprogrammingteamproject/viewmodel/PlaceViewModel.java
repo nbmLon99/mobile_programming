@@ -41,7 +41,7 @@ public class PlaceViewModel extends ViewModel {
 
 
     public void resetPlaceResults(){
-        placeRepository.resetLiveData();
+        placeRepository.resetConditionLiveData();
     }
 
 

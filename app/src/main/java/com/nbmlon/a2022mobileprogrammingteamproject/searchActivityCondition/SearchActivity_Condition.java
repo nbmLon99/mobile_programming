@@ -45,8 +45,6 @@ public class SearchActivity_Condition extends AppCompatActivity implements Lifec
         findViewById(R.id.btn_start_search_condition).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                placeViewModel.resetPlaceResults();
-
                 //로딩뷰 띄우기
                 LoadingDialog loadingDialog = new LoadingDialog(SearchActivity_Condition.this, "검색중");
                 loadingDialog.show();

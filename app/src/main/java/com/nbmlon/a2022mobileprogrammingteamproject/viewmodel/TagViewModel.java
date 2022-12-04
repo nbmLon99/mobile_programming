@@ -55,5 +55,7 @@ public class TagViewModel extends ViewModel {
     }
 
 
-
+    public void resetTagResults() {
+        placeRepository.resetTagLiveData();
+    }
 }
