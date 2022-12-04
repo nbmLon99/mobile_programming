@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioButton;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,33 +16,32 @@ import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SettingTagAdapter extends RecyclerView.Adapter<SettingTagAdapter.TagViewHolder> {
-    private ArrayList<TagDTO> items;
+    private List<TagDTO> items;
     private TagRemovedCallback rc;
 
-    public SettingTagAdapter(ArrayList<TagDTO> items, TagRemovedCallback rc){
+    public SettingTagAdapter(List<TagDTO> items, TagRemovedCallback tagRemovedCallback){
         this.items = items;
-        this.rc = rc;
+        this.rc = tagRemovedCallback;
     }
 
 
     class TagViewHolder extends RecyclerView.ViewHolder{
         TextView tv_tag;
-        RadioButton rb_tag;
         Button btn_delete_tag;
 
         public TagViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_tag = itemView.findViewById(R.id.tv_tag);
-            rb_tag = itemView.findViewById(R.id.rb_tag);
             btn_delete_tag = itemView.findViewById(R.id.btn_delete_tag);
             btn_delete_tag.setVisibility(View.VISIBLE);
         }
 
 
         private void bind(int position){
-            btn_delete_tag.setVisibility(View.VISIBLE);
+            tv_tag.setText(items.get(position).name);
             btn_delete_tag.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -55,8 +54,8 @@ public class SettingTagAdapter extends RecyclerView.Adapter<SettingTagAdapter.Ta
                                     items.remove(position);
                                     SettingTagAdapter.this.notifyItemRemoved(position);
 
-                                    //room에서 삭제
-                                    rc.TagRemoved();
+                                    //room에서 삭제 구현필요
+                                    rc.TagRemoved(tagRemove);
                                 }
                             })
                             .setPositiveButton("취소", new DialogInterface.OnClickListener(){
@@ -67,6 +66,7 @@ public class SettingTagAdapter extends RecyclerView.Adapter<SettingTagAdapter.Ta
                             })
                             .setCancelable(false)
                             .create();
+                    dialog.show();
                 }
             });
         }
@@ -75,7 +75,7 @@ public class SettingTagAdapter extends RecyclerView.Adapter<SettingTagAdapter.Ta
     @NonNull
     @Override
     public SettingTagAdapter.TagViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tag_list, parent, true);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tag_list, parent, false);
         return new SettingTagAdapter.TagViewHolder (itemView);
     }
 
@@ -97,6 +97,6 @@ public class SettingTagAdapter extends RecyclerView.Adapter<SettingTagAdapter.Ta
 
 
     public interface TagRemovedCallback{
-        void TagRemoved();
+        void TagRemoved(TagDTO tag);
     }
 }

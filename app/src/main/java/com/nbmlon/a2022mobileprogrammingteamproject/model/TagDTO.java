@@ -23,7 +23,7 @@ public class TagDTO {
 
 
     //삭제를 위해선 필요하겠네
-   @TypeConverters(myTypeConverter.class)
+    @TypeConverters(myTypeConverter.class)
     @ColumnInfo(name = "placeIds")
     public List<String> place_ids = Collections.emptyList();
 

@@ -9,14 +9,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
+import com.nbmlon.a2022mobileprogrammingteamproject.dialog.LoadingDialog;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.TagViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /** Tag 추가/삭제 Activity **/
 public class SettingTagActivity extends AppCompatActivity implements SettingTagAdapter.TagRemovedCallback {
@@ -29,8 +32,13 @@ public class SettingTagActivity extends AppCompatActivity implements SettingTagA
         setContentView(R.layout.activity_tag_setting);
         tagViewModel = new ViewModelProvider(this).get(TagViewModel.class);
         RecyclerView rv = findViewById(R.id.rv_tag_setting);
-        mAdapter = new SettingTagAdapter(new ArrayList<>(), this);
-        rv.setAdapter(mAdapter);
+        tagViewModel.getAllTags().observe(this, new Observer<List<TagDTO>>() {
+            @Override
+            public void onChanged(List<TagDTO> tagDTOS) {
+                mAdapter = new SettingTagAdapter(tagDTOS, SettingTagActivity.this);
+                rv.setAdapter(mAdapter);
+            }
+        });
 
         findViewById(R.id.btn_add_tag).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,12 +69,25 @@ public class SettingTagActivity extends AppCompatActivity implements SettingTagA
                         })
                         .setCancelable(true)
                         .create();
+
+                dialog.show();
             }
         });
     }
 
     @Override
-    public void TagRemoved() {
+    public void TagRemoved(TagDTO tag) {
+        LoadingDialog loadingDialog = new LoadingDialog(this, "삭제중");
+        loadingDialog.show();
 
+        tagViewModel.delete(tag);
+
+        tagViewModel.getAllTags().observe(this, new Observer<List<TagDTO>>() {
+            @Override
+            public void onChanged(List<TagDTO> tagDTOS) {
+                loadingDialog.dismiss();
+                tagViewModel.getAllTags().removeObserver(this);
+            }
+        });
     }
 }

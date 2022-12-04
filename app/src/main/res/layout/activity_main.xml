@@ -90,6 +90,7 @@
 
 
 
+    <!-- Navigation Drawer relative 하단에 위치 -->
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/side_menu"
