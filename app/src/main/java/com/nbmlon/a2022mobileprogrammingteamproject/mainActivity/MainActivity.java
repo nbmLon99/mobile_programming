@@ -4,20 +4,24 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition.SearchActivity_Condition;
 import com.nbmlon.a2022mobileprogrammingteamproject.myMap.MyMapView;
 import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityTag.SearchActivity_Tag;
+import com.nbmlon.a2022mobileprogrammingteamproject.settingTagActivity.SettingTagActivity;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.JsonUploading;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.Utils;
 
@@ -28,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
     final static int CALL_SEARCH_CONDITION = 101;
     final static int CALL_SEARCH_TAG = 102;
 
-    MyMapView mapView;
-    Boolean isFabOpen = false;
+    private MyMapView mapView;
+    private Boolean isFabOpen = false;
 
-    FloatingActionButton mainFab, conditionFab, tagFab;
+    private FloatingActionButton mainFab, conditionFab, tagFab;
 
 
 
@@ -40,20 +44,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setFloatingButtonOnClick();
-
-        ((Button)findViewById(R.id.btn_side_menu)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((DrawerLayout)findViewById(R.id.rootLayout)).openDrawer(findViewById(R.id.side_menu));
-            }
-        });
-
+        setSideMenu();
     }
 
     private void mapViewInitialize() {
         mapView = new MyMapView(this);
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.mapview);
         mapViewContainer.addView(mapView);
+    }
+
+    private void setSideMenu(){
+        ((Button)findViewById(R.id.btn_side_menu)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((DrawerLayout)findViewById(R.id.rootLayout)).openDrawer(findViewById(R.id.side_menu));
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.side_menu);
+        navigationView.findViewById(R.id.side_menu_tag_setting).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SettingTagActivity.class));
+            }
+        });
+
+
     }
 
     private void setFloatingButtonOnClick(){

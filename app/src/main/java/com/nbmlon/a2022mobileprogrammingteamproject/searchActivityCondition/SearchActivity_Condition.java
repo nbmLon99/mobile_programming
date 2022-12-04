@@ -53,7 +53,7 @@ public class SearchActivity_Condition extends AppCompatActivity implements Lifec
             @Override
             public void onClick(View v) {
                 //로딩뷰 띄우기
-                LoadingDialog loadingDialog = new LoadingDialog(SearchActivity_Condition.this);
+                LoadingDialog loadingDialog = new LoadingDialog(SearchActivity_Condition.this, "검색중");
                 loadingDialog.show();
                 placeViewModel.searchForCondition(
                         spinner.getSelectedItem().toString(),

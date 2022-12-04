@@ -10,19 +10,6 @@
     tools:context=".mainActivity.MainActivity"
     >
 
-    <com.google.android.material.navigation.NavigationView
-
-        android:id="@+id/side_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="top|left" >
-        <include
-            layout="@layout/layout_menu"
-            />
-
-    </com.google.android.material.navigation.NavigationView>
-
-
     <RelativeLayout
         android:id="@+id/mapview"
         android:layout_weight="1.5"
@@ -102,6 +89,22 @@
 
 
 
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/side_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        >
+        <Button
+            android:id="@+id/side_menu_tag_setting"
+            android:text="사이드메뉴 1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.navigation.NavigationView>
 
 
 

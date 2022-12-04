@@ -20,13 +20,14 @@ import java.util.ArrayList;
 
 /** Tag 추가/삭제 Activity **/
 public class SettingTagActivity extends AppCompatActivity implements SettingTagAdapter.TagRemovedCallback {
-    TagViewModel tagViewModel = new ViewModelProvider(this).get(TagViewModel.class);
+    TagViewModel tagViewModel;
     SettingTagAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tag_setting);
+        tagViewModel = new ViewModelProvider(this).get(TagViewModel.class);
         RecyclerView rv = findViewById(R.id.rv_tag_setting);
         mAdapter = new SettingTagAdapter(new ArrayList<>(), this);
         rv.setAdapter(mAdapter);
