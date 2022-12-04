@@ -15,6 +15,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.FirebaseName;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,8 +23,16 @@ public class PlaceRepository {
     private PlaceRepository() {}
     private static FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private static PlaceRepository INSTANCE = null;
-    private static MutableLiveData<List<PlaceDTO>> searchResultMutableLiveData = new MutableLiveData<>();
-    public static LiveData<List<PlaceDTO>> getRepositoryResult() {return searchResultMutableLiveData; }
+
+    /** LiveData For ConditionSearchResult **/
+    private static MutableLiveData<List<PlaceDTO>> searchConditionResultMutableLiveData = new MutableLiveData<>();
+    public static LiveData<List<PlaceDTO>> getRepositoryConditionResult() {return searchConditionResultMutableLiveData; }
+
+    /** LiveData For TagSearchResult **/
+    private static MutableLiveData<List<PlaceDTO>> searchTagResultMutableLiveData = new MutableLiveData<>();
+    public static LiveData<List<PlaceDTO>> getRepositoryTagResult() {return searchTagResultMutableLiveData; }
+
+
 
     public static void initialize() {
         INSTANCE = new PlaceRepository();
@@ -36,9 +45,9 @@ public class PlaceRepository {
         return INSTANCE;
     }
 
-    public void searchPlaceFromID(List<String> ids, CompleteQueryCallback completeQueryCallback){
+    public void searchPlaceFromID(List<String> ids){
         if(ids == null || ids.isEmpty()){
-            completeQueryCallback.QueryComplete(Collections.EMPTY_LIST);
+            searchTagResultMutableLiveData.setValue(Collections.EMPTY_LIST);
             return;
         }
 
@@ -49,7 +58,12 @@ public class PlaceRepository {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
-                            completeQueryCallback.QueryComplete(task.getResult().getDocuments());
+                            List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
+                            List<PlaceDTO> result = Collections.EMPTY_LIST;
+                            for( DocumentSnapshot dc : documentSnapshots){
+                                result.add(dc.toObject(PlaceDTO.class));
+                            }
+                            searchTagResultMutableLiveData.setValue(result);
                         }
                     }
                 });
@@ -63,9 +77,7 @@ public class PlaceRepository {
             String storage,
             String infant,
             String wheel,
-            String pointRoad,
-
-            CompleteQueryCallback completeQueryCallback
+            String pointRoad
     ) {
         CollectionReference collection = firestore.collection(FirebaseName.Collection.name);
         Query query = collection;
@@ -87,22 +99,23 @@ public class PlaceRepository {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
-                    completeQueryCallback.QueryComplete(task.getResult().getDocuments());
+                    List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
+                    ArrayList<PlaceDTO> results = new ArrayList<>();
+                    for (DocumentSnapshot dc : documentSnapshots){
+                        results.add( dc.toObject(PlaceDTO.class) );
+                    }
+                    searchConditionResultMutableLiveData.setValue(results);
                 }
             }
         });
     }
 
-    public void resetLiveData(){
-        searchResultMutableLiveData = new MutableLiveData<>();
+    public void resetConditionLiveData(){
+        searchConditionResultMutableLiveData = new MutableLiveData<>();
     }
 
-    public void setLiveDataValue(List<PlaceDTO> placeDTOS){
-        searchResultMutableLiveData.setValue(placeDTOS);
-    }
-
-    public interface CompleteQueryCallback {
-        public void QueryComplete(List<DocumentSnapshot> documentSnapshots);
+    public void resetTagLiveData(){
+        searchTagResultMutableLiveData = new MutableLiveData<>();
     }
 
 }
