@@ -46,7 +46,8 @@
                 android:id="@+id/infantHolder_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:checkedButton="@id/infantHolder_default">
 
                 <RadioButton
                     android:id="@+id/infantHolder_yes"
@@ -59,9 +60,10 @@
                     android:layout_height="wrap_content" />
 
                 <RadioButton
+                    android:id="@+id/infantHolder_default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true" />
+                    />
             </RadioGroup>
         </LinearLayout>
 
@@ -80,7 +82,8 @@
                 android:id="@+id/parking_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:checkedButton="@id/parking_default">
 
                 <RadioButton
                     android:id="@+id/parking_yes"
@@ -93,9 +96,10 @@
                     android:layout_height="wrap_content" />
 
                 <RadioButton
+                    android:id="@+id/parking_default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true" />
+                    />
 
             </RadioGroup>
         </LinearLayout>
@@ -114,7 +118,8 @@
                 android:id="@+id/storage_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:checkedButton="@id/storage_default">
 
                 <RadioButton
                     android:id="@+id/storage_yes"
@@ -127,9 +132,10 @@
                     android:layout_height="wrap_content" />
 
                 <RadioButton
+                    android:id="@+id/storage_default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true" />
+                    />
             </RadioGroup>
         </LinearLayout>
 
@@ -147,7 +153,9 @@
                 android:id="@+id/wheelChair_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:checkedButton="@id/wheelChair_default"
+                >
 
                 <RadioButton
                     android:id="@+id/wheelChair_yes"
@@ -160,9 +168,10 @@
                     android:layout_height="wrap_content" />
 
                 <RadioButton
+                    android:id="@+id/wheelChair_default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true" />
+                    />
             </RadioGroup>
         </LinearLayout>
 
@@ -181,7 +190,9 @@
                 android:id="@+id/pointRoad_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:checkedButton="@id/pointRoad_default"
+                >
 
                 <RadioButton
                     android:id="@+id/pointRoad_yes"
@@ -194,9 +205,9 @@
                     android:layout_height="wrap_content" />
 
                 <RadioButton
+                    android:id="@+id/pointRoad_default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     tools:layout_editor_absoluteX="48dp"
                     tools:layout_editor_absoluteY="211dp" />
 
@@ -209,7 +220,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_marginright="20dp"
+        android:layout_marginRight="20dp"
         tools:layout_editor_absoluteX="307dp"
         tools:layout_editor_absoluteY="658dp" />
 

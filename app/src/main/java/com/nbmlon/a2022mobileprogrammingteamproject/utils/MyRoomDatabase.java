@@ -13,10 +13,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
+//https://mynamewoon.tistory.com/15
 //https://roomedia.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-RoomDatabase-in-Java
 @Database(entities = {TagDTO.class}, version = 1)
 public abstract class MyRoomDatabase extends RoomDatabase {
-    private MyRoomDatabase(){}
+
 
     public abstract TagDAO tagDao();
     public static final int NUMBER_OF_THREADS = 4;
