@@ -1,56 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-    <component name="DesignSurface">
-        <option name="filePathToZoomLevelMap">
-            <map>
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_main.xml" value="0.25" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_place_info.xml" value="0.14918946301925026" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_search_condition.xml" value="0.16" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_search_tag.xml" value="0.14918946301925026" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_tag_setting.xml" value="0.33" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/dialog_tag_add.xml" value="0.2140625" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/dialog_tag_set.xml" value="0.7819253438113949" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_spinner_area.xml" value="0.3098958333333333" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_tag_list.xml" value="0.3098958333333333" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_tag_selectable.xml" value="0.3098958333333333" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_tag_setting_control.xml" value="0.10461956521739131" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/layout_dialog_tag.xml" value="0.3098958333333333" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/layout_loading.xml" value="0.33" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/layout_menu.xml" value="0.18" />
-                <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_main.xml" value="0.22" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_main2.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_place_info.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_search_condition.xml" value="0.15555555555555556" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_search_tag.xml" value="0.22" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_setting_tag.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_tag_setting.xml" value="0.13451086956521738" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/dialog_tag_add.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/dialog_tag_set.xml" value="0.10461956521739131" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_spinner_area.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_list.xml" value="0.13451086956521738" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_selectable.xml" value="0.13451086956521738" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_setting_btn.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_setting_control.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_dialog_addtag.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_item_search_tag.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_loading.xml" value="0.3333333333333333" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_menu.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_tag_dialog.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/loading_view.xml" value="0.13451086956521738" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/mapview.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/spinner_area_item.xml" value="0.1" />
-                <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/menu/sidemenu.xml" value="0.1" />
-            </map>
-        </option>
-    </component>
-    <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-        <output url="file://$PROJECT_DIR$/build/classes" />
-    </component>
-    <component name="ProjectType">
-        <option name="id" value="Android" />
-    </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_place_info.xml" value="0.14918946301925026" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_search_condition.xml" value="0.16" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_search_tag.xml" value="0.14918946301925026" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/activity_tag_setting.xml" value="0.33" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/dialog_tag_add.xml" value="0.2140625" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/dialog_tag_set.xml" value="0.7819253438113949" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_spinner_area.xml" value="0.3098958333333333" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_tag_list.xml" value="0.3098958333333333" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_tag_selectable.xml" value="0.3098958333333333" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/item_tag_setting_control.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/layout_dialog_tag.xml" value="0.3098958333333333" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/layout_loading.xml" value="0.33" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/layout/layout_menu.xml" value="0.18" />
+        <entry key="..\:/Users/Samsung/Desktop/2022 2/MobileTerm/MobileProgramming/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/activity_place_info.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/activity_search_condition.xml" value="0.275" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/activity_search_tag.xml" value="0.30833333333333335" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/activity_tag_setting.xml" value="0.27708333333333335" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/dialog_tag_add.xml" value="0.27708333333333335" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/dialog_tag_set.xml" value="0.27708333333333335" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/item_spinner_area.xml" value="0.275" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/item_tag_list.xml" value="0.27708333333333335" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/layout_loading.xml" value="0.275" />
+        <entry key="..\:/Users/Samsung/Desktop/mobile/mobile_programming/app/src/main/res/layout/layout_menu.xml" value="0.27708333333333335" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_main2.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_place_info.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_search_condition.xml" value="0.15555555555555556" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_search_tag.xml" value="0.22" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_setting_tag.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/activity_tag_setting.xml" value="0.13451086956521738" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/dialog_tag_add.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/dialog_tag_set.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_spinner_area.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_list.xml" value="0.13451086956521738" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_selectable.xml" value="0.13451086956521738" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_setting_btn.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/item_tag_setting_control.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_dialog_addtag.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_item_search_tag.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_loading.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_menu.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/layout_tag_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/loading_view.xml" value="0.13451086956521738" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/mapview.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/layout/spinner_area_item.xml" value="0.1" />
+        <entry key="..\:/Users/rhfwl/AndroidStudioProjects/2022mobileProgrammingTeamProject/app/src/main/res/menu/sidemenu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
 </project>
-
