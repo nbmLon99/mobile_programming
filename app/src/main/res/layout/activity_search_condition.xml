@@ -40,13 +40,16 @@
                 android:textSize="15sp"
                 android:gravity="center"/>
 
+
             <Spinner
                 android:id="@+id/area_spinner"
                 android:layout_width="274dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginRight="20dp"
-                android:background="@color/color4" />
+                android:background="@color/color4"
+
+                />
         </LinearLayout>
 
         <LinearLayout
