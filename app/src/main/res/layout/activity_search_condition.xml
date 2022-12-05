@@ -4,12 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".searchActivityCondition.SearchActivity_Condition">
+    tools:context=".searchActivityCondition.SearchActivity_Condition"
+    android:background="@color/color1">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Search_Condition Page!"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:background="@color/color3"/>
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,198 +33,269 @@
 
             <TextView
                 android:layout_width="49dp"
-                android:layout_height="29dp"
+                android:layout_height="36dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="50dp"
                 android:text="지역명"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:gravity="center"/>
 
             <Spinner
                 android:id="@+id/area_spinner"
                 android:layout_width="274dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginRight="20dp" />
+                android:layout_marginRight="20dp"
+                android:background="@color/color4" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal">
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:background="@color/color2"
+            >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="infantholder 유무" />
+                android:layout_width="123dp"
+                android:layout_height="match_parent"
+                android:text="편의시설"
+                android:gravity="center"/>
+
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="match_parent"
+                android:text="유"
+
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="match_parent"
+                android:text="무"
+
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="무관"
+
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="123dp"
+                android:layout_height="match_parent"
+                android:text="infantholder"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
             <RadioGroup
                 android:id="@+id/infantHolder_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="288dp"
+                android:layout_height="match_parent"
+                android:checkedButton="@id/infantHolder_default"
                 android:orientation="horizontal"
-                android:checkedButton="@id/infantHolder_default">
+                android:gravity="center">
 
                 <RadioButton
                     android:id="@+id/infantHolder_yes"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <RadioButton
-                    android:id="@+id/infantHolder_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
 
                 <RadioButton
                     android:id="@+id/infantHolder_default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/infantHolder_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
             </RadioGroup>
+
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="70dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="77dp"
-                android:layout_height="wrap_content"
-                android:text="주차장유무" />
+                android:layout_width="123dp"
+                android:layout_height="match_parent"
+                android:text="주차장"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
             <RadioGroup
                 android:id="@+id/parking_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:checkedButton="@id/parking_default">
+                android:layout_width="288dp"
+                android:layout_height="match_parent"
+                android:checkedButton="@id/parking_default"
+                android:gravity="center"
+                android:orientation="horizontal">
+
 
                 <RadioButton
                     android:id="@+id/parking_yes"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <RadioButton
                     android:id="@+id/parking_no"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <RadioButton
                     android:id="@+id/parking_default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:layout_weight="1" />
 
             </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="70dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="39dp"
-                android:text="짐보관소 유무" />
+                android:layout_width="123dp"
+                android:layout_height="match_parent"
+                android:text="짐보관소"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textAlignment="center"/>
 
             <RadioGroup
                 android:id="@+id/storage_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:checkedButton="@id/storage_default">
+                android:layout_width="288dp"
+                android:layout_height="match_parent"
+                android:checkedButton="@id/storage_default"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/storage_yes"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <RadioButton
                     android:id="@+id/storage_no"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <RadioButton
                     android:id="@+id/storage_default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:layout_weight="1" />
             </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="70dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="휠체어 유무" />
+                android:layout_width="123dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="휠체어"
+                android:gravity="center"
+                android:textAlignment="center" />
 
             <RadioGroup
                 android:id="@+id/wheelChair_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_width="288dp"
+                android:layout_height="match_parent"
                 android:checkedButton="@id/wheelChair_default"
-                >
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/wheelChair_yes"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <RadioButton
                     android:id="@+id/wheelChair_no"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <RadioButton
                     android:id="@+id/wheelChair_default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:layout_weight="1" />
             </RadioGroup>
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="92dp"
+            android:layout_height="70dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="96dp"
-                android:layout_height="37dp"
-                android:text="점자도로 유무" />
+                android:layout_width="123dp"
+                android:layout_height="match_parent"
+                android:text="점자도로"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:gravity="center"
+                />
 
             <RadioGroup
                 android:id="@+id/pointRoad_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_width="288dp"
+                android:layout_height="match_parent"
                 android:checkedButton="@id/pointRoad_default"
+                android:orientation="horizontal"
+                android:gravity="center"
                 >
 
                 <RadioButton
                     android:id="@+id/pointRoad_yes"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <RadioButton
                     android:id="@+id/pointRoad_no"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <RadioButton
                     android:id="@+id/pointRoad_default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:layout_editor_absoluteX="48dp"
-                    tools:layout_editor_absoluteY="211dp" />
+                    android:layout_weight="1" />
 
             </RadioGroup>
         </LinearLayout>
@@ -220,7 +306,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_marginRight="20dp"
+        android:layout_margin="30dp"
+        android:text="검색"
+        android:background="@color/color3"
         tools:layout_editor_absoluteX="307dp"
         tools:layout_editor_absoluteY="658dp" />
 

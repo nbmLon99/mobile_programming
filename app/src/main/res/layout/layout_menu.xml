@@ -4,8 +4,12 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@color/color1"
     tools:menu="@menu/sidemenu">
 
     <!-- 추가 필요 -->
+
+
+
 
 </LinearLayout>

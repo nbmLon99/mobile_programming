@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode == RETURN_SEARCH_CONDITION){
             Log.d("받아온결과 검색개수", Integer.toString(placeViewModel.getResultLiveData().getValue().size()) );
             //뷰모델에서 데이터 가져와서 지도에 띄우기
+
             //데이터 지워야함
             placeViewModel.resetPlaceResults();
         }
