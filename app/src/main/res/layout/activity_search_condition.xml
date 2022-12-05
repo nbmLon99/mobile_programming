@@ -14,38 +14,40 @@
         >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="0dp"
+            android:layout_weight="3"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Search_Condition Page!"
+                android:background="@color/color3"
                 android:gravity="center"
-                android:textSize="25sp"
-                android:background="@color/color3"/>
+                android:text="Search_Condition Page!"
+                android:textSize="25sp" />
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="131dp"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="49dp"
                 android:layout_height="36dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="50dp"
+                android:gravity="center"
                 android:text="지역명"
-                android:textSize="15sp"
-                android:gravity="center"/>
+                android:textSize="15sp" />
 
 
             <Spinner
                 android:id="@+id/area_spinner"
                 android:layout_width="274dp"
                 android:layout_height="36dp"
-                android:layout_marginTop="50dp"
                 android:layout_marginRight="20dp"
                 android:background="@color/color4"
 
@@ -54,9 +56,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"
             android:orientation="horizontal"
             android:background="@color/color2"
+
             >
 
             <TextView
@@ -90,7 +94,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="0dp"
+            android:layout_weight="4"
             android:orientation="horizontal"
             >
 
@@ -135,7 +140,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="0dp"
+            android:layout_weight="4"
             android:orientation="horizontal">
 
             <TextView
@@ -178,8 +184,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal">
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            >
 
             <TextView
                 android:layout_width="123dp"
@@ -219,8 +227,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal">
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            >
 
             <TextView
                 android:layout_width="123dp"
@@ -261,8 +271,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal">
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            >
 
             <TextView
                 android:layout_width="123dp"
@@ -302,18 +314,18 @@
 
             </RadioGroup>
         </LinearLayout>
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_start_search_condition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="30dp"
-        android:text="검색"
-        android:background="@color/color3"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="658dp" />
+            <Button
+                android:id="@+id/btn_start_search_condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="30dp"
+                android:background="@color/color3"
+                android:text="검색"
+                 />
+
+    </LinearLayout>
 
 
 </FrameLayout>
