@@ -15,6 +15,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.utils.FirebaseName;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -59,7 +61,7 @@ public class PlaceRepository {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
                             List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
-                            List<PlaceDTO> result = Collections.EMPTY_LIST;
+                            ArrayList<PlaceDTO> result = new ArrayList<>();
                             for( DocumentSnapshot dc : documentSnapshots){
                                 result.add(dc.toObject(PlaceDTO.class));
                             }

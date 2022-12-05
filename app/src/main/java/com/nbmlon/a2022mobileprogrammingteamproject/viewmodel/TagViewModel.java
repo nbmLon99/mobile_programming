@@ -1,6 +1,9 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
@@ -8,6 +11,10 @@ import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.repository.PlaceRepository;
 import com.nbmlon.a2022mobileprogrammingteamproject.repository.TagRepositoy;
 
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -17,23 +24,18 @@ public class TagViewModel extends ViewModel {
 
     public TagViewModel() {}
 
-    /** LiveData For AllTag **/
+
+    /** LiveData For AllTag in Repository **/
     public LiveData<List<TagDTO>> getAllTags() {
         return tagRepository.getAllTags();
     }
+
+
 
     /** LiveData For TagSearching **/
     public LiveData<List<PlaceDTO>> getSearchResult(){
         return placeRepository.getRepositoryTagResult();
     }
-
-    public void insert(TagDTO tag) {
-        tagRepository.insert(tag);
-    }
-    public void delete(TagDTO tag){tagRepository.delete(tag);}
-    public void update(List<TagDTO> tags){tagRepository.update(tags);}
-
-
     /** 태그로 검색 **/
     public void searchForTags(Set<Integer> tagIDs) {
         List<String> resultPlaceIDs = null;
@@ -44,29 +46,55 @@ public class TagViewModel extends ViewModel {
                         resultPlaceIDs.retainAll(tag.place_ids);
                     else
                         resultPlaceIDs = tag.place_ids;
+                    Log.d("result 변화", resultPlaceIDs.toString());
+
                 }
             }
         }
-
         placeRepository.searchPlaceFromID(resultPlaceIDs);
     }
 
-    /** Place별 Tag 목록 얻어오기 **/
-    public LiveData<List<TagDTO>> TagForPlace(){
-        return tagRepository.GetPlaceTag();
+    /** Repository 내 검색결과 초기화 **/
+    public void resetTagResults() {
+        placeRepository.resetTagLiveData();
     }
-    /** 검색 시작 **/
+
+
+
+
+    public void insert(TagDTO tag) {
+        tagRepository.insert(tag);
+    }
+    public void delete(TagDTO tag){tagRepository.delete(tag);}
+    public void update(List<TagDTO> tags){tagRepository.update(tags);}
+
+
+
+
+    /** 장소별 태그 목록 검색결과 **/
+    private MutableLiveData<List<TagDTO>> TagForPlace = new MutableLiveData<>();
+    public LiveData<List<TagDTO>> GetTagForPlace() {
+        return TagForPlace;
+    }
+
+    /** 장소별 태그 검색 시작 **/
     public void StartFindTagForPlace(PlaceDTO placeDTO){
         new Thread(){
             @Override
             public void run() {
                 super.run();
-                tagRepository.FindTagForPlace(placeDTO);
+                ArrayList<TagDTO> results = new ArrayList<>();
+                for(TagDTO tagDTO : getAllTags().getValue()){
+                    if(tagDTO.place_ids.contains(placeDTO.id))
+                        results.add(tagDTO);
+                }
+                TagForPlace.postValue(results);
             }
         }.start();
     }
 
-    public void resetTagResults() {
-        placeRepository.resetTagLiveData();
+    public void setModifiedTagList(List<TagDTO> modifiedTagList){
+        TagForPlace.setValue(modifiedTagList);
     }
+
 }

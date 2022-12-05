@@ -17,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
+import com.nbmlon.a2022mobileprogrammingteamproject.placInfoActivity.PlaceInfoActivity;
 import com.nbmlon.a2022mobileprogrammingteamproject.repository.TagRepositoy;
 import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition.SearchActivity_Condition;
 import com.nbmlon.a2022mobileprogrammingteamproject.myMap.MyMapView;
@@ -31,6 +32,7 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
+    //RequestCode
     private final static int CALL_SEARCH_CONDITION = 101;
     private final static int CALL_SEARCH_TAG = 102;
     public final static int RETURN_SEARCH_CONDITION = 103;
@@ -164,6 +166,15 @@ public class MainActivity extends AppCompatActivity {
     /** Load JSONSTRING From File - Used For Uploading **/
     private String get_JSON_fileString_FromFile(String assetFilename){
         return Utils.getJsonFromAssets(getApplicationContext(), assetFilename);
+    }
+
+
+    private void PlaceInfoTest(){
+        Intent intent = new Intent(MainActivity.this, PlaceInfoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("placeDTO",new PlaceDTO("01yfacWyqH8crtk4hBQ0","테스트이름","테스트 도시","테스트 주소","테스트 위도","경도","폰","url",true,true,true,true,true));
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
 }

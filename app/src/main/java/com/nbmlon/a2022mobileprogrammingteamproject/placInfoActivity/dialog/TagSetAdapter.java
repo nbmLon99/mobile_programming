@@ -14,12 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class TagSetAdapter extends RecyclerView.Adapter<TagSetAdapter.TagViewHolder> {
 
-    private Set<Integer> checkedTagIDs;
+    private Set<Integer> checkedTagIDs = new HashSet<>();
     private List<TagDTO> items;
 
     public TagSetAdapter(List<TagDTO> items){
@@ -41,6 +43,7 @@ public class TagSetAdapter extends RecyclerView.Adapter<TagSetAdapter.TagViewHol
 
 
         private void bind(int position){
+            tv_tag.setText(items.get(position).name);
             ck_tag.setVisibility(View.VISIBLE);
             ck_tag.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -59,7 +62,7 @@ public class TagSetAdapter extends RecyclerView.Adapter<TagSetAdapter.TagViewHol
     @NonNull
     @Override
     public TagSetAdapter.TagViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tag_list, parent, true);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tag_list, parent, false);
         return new TagSetAdapter.TagViewHolder(itemView);
     }
 
