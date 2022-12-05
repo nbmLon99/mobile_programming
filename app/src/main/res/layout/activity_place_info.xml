@@ -12,71 +12,99 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="40dp"
         android:text="장소별 Detail page"
         android:background="@color/color2"
-        android:textSize="28sp"
+        android:textSize="25sp"
         android:gravity="center"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="match_parent"
+        android:weightSum="10"
         android:orientation="vertical"
-        android:layout_margin="30dp">
-
-        <TextView
-            android:id="@+id/detail_name"
+        >
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:orientation="vertical"
+            android:layout_margin="30dp"
+            android:weightSum="6"
+            >
 
+            <TextView
+                android:id="@+id/detail_name"
+                android:text="테스트 네임"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/detail_phone"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/detail_address"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/detail_city"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/detail_condition"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/detail_url"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textStyle="italic"
+                />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/detail_tagRV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
 
-        <TextView
-            android:id="@+id/detail_phone"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center"
-            />
 
-        <TextView
-            android:id="@+id/detail_address"
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/detail_btn_setTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/color2"
+            android:src="@android:drawable/ic_input_add" />
 
-        <TextView
-            android:id="@+id/detail_city"
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
 
-        <TextView
-            android:id="@+id/detail_condition"
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
 
-        <TextView
-            android:id="@+id/detail_url"
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/detail_tagRV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/detail_btn_setTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="10dp"
-        android:src="@android:drawable/ic_input_add" />
 
 
 </LinearLayout>
