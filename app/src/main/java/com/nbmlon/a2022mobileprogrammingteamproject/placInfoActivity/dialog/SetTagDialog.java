@@ -14,6 +14,7 @@ import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -53,7 +54,11 @@ public class SetTagDialog extends Dialog {
                 Set<Integer> checkedTagIDs = mAdapter.getCheckedTagIDs_for_search();
                 //tag별로 장소 업데이트
                 boolean updated = false;
+                List<TagDTO> modifiedPlaceTag = Collections.EMPTY_LIST;
                 for(TagDTO tag : mTags) {
+                    if(checkedTagIDs.contains(tag.id))
+                        modifiedPlaceTag.add(tag);
+
                     if (checkedTagIDs.contains(tag.id) && !tag.place_ids.contains(mDstPlace.id)) {
                         tag.place_ids.add(mDstPlace.id);
                         updated =true;
@@ -63,7 +68,7 @@ public class SetTagDialog extends Dialog {
                         updated =true;
                     }
                 }
-                placeTaggedDoneCallback.TaggedDone(updated, mTags);
+                placeTaggedDoneCallback.TaggedDone(updated, mTags, modifiedPlaceTag);
 
                 SetTagDialog.this.dismiss();
             }
@@ -72,6 +77,6 @@ public class SetTagDialog extends Dialog {
     }
 
     public interface PlaceTaggedDoneCallback{
-        public void TaggedDone(boolean updated, List<TagDTO> updatedTags);
+        public void TaggedDone(boolean updated, List<TagDTO> AllTags, List<TagDTO> modifiedDstPlaceTag);
     }
 }

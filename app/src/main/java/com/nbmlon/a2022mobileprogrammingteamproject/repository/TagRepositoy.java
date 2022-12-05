@@ -90,7 +90,7 @@ public class TagRepositoy {
             if(tagDTO.place_ids.contains(placeDTO.id))
                 results.add(tagDTO);
         }
-        PlaceTag.setValue(results);
+        PlaceTag.postValue(results);
 
     }
 }

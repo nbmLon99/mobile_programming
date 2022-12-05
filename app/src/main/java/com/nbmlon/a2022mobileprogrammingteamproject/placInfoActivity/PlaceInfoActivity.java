@@ -8,8 +8,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.nbmlon.a2022mobileprogrammingteamproject.MyApplication;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
@@ -20,9 +20,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class PlaceInfoActivity extends AppCompatActivity {
-    TagViewModel tagViewModel;
-    PlaceDTO mDstPlace;
-
+    private TagViewModel tagViewModel;
+    private PlaceDTO mDstPlace;
+    private PlaceInfoTagAdapter mAdapter;
+    private RecyclerView tagRv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +36,14 @@ public class PlaceInfoActivity extends AppCompatActivity {
         mDstPlace = intent.getBundleExtra("placeInfo").getParcelable("placeDTO");
 
 
+        tagRv = findViewById(R.id.detail_tagRV);
         //TagAdapter 설정
         tagViewModel.StartFindTagForPlace(mDstPlace);
-        tagViewModel.TagForPlace().observe(this, new Observer<List<TagDTO>>() {
+        tagViewModel.GetTagForPlace().observe(this, new Observer<List<TagDTO>>() {
             @Override
             public void onChanged(List<TagDTO> tagDTOS) {
-
+                mAdapter = new PlaceInfoTagAdapter(tagDTOS);
+                tagRv.setAdapter(mAdapter);
             }
         });
 
@@ -58,12 +61,12 @@ public class PlaceInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SetTagDialog dialog = new SetTagDialog(getBaseContext(), Collections.EMPTY_LIST, mDstPlace, new SetTagDialog.PlaceTaggedDoneCallback() {
                     @Override
-                    public void TaggedDone(boolean updated, List<TagDTO> updatedTags) {
+                    public void TaggedDone(boolean updated, List<TagDTO> updatedTags, List<TagDTO> modifiedPlaceTag) {
                         //태그 수정된 게 존재
                         if(updated){
                             //태그 업데이트 후 디테일 인포 수정 후 어뎁터 연결 -> 화면 표시
                             tagViewModel.update(updatedTags);
-
+                            tagViewModel.setModifiedTagList(modifiedPlaceTag);
                         }
                     }
                 });
