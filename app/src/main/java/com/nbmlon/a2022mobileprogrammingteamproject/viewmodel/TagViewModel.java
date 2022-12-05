@@ -1,16 +1,13 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.viewmodel;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.repository.PlaceRepository;
 import com.nbmlon.a2022mobileprogrammingteamproject.repository.TagRepositoy;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -54,6 +51,20 @@ public class TagViewModel extends ViewModel {
         placeRepository.searchPlaceFromID(resultPlaceIDs);
     }
 
+    /** Place별 Tag 목록 얻어오기 **/
+    public LiveData<List<TagDTO>> TagForPlace(){
+        return tagRepository.GetPlaceTag();
+    }
+    /** 검색 시작 **/
+    public void StartFindTagForPlace(PlaceDTO placeDTO){
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                tagRepository.FindTagForPlace(placeDTO);
+            }
+        }.start();
+    }
 
     public void resetTagResults() {
         placeRepository.resetTagLiveData();

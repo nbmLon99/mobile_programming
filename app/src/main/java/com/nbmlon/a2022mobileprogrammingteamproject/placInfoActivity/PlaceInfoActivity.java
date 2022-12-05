@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.MyApplication;
@@ -19,16 +20,29 @@ import java.util.Collections;
 import java.util.List;
 
 public class PlaceInfoActivity extends AppCompatActivity {
-    TagViewModel tagViewModel = new ViewModelProvider(this).get(TagViewModel.class);
+    TagViewModel tagViewModel;
     PlaceDTO mDstPlace;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_info);
+        tagViewModel = new ViewModelProvider(this).get(TagViewModel.class);
 
+        //dstPlaceDTO 가져오기
         Intent intent = getIntent();
         mDstPlace = intent.getBundleExtra("placeInfo").getParcelable("placeDTO");
+
+
+        //TagAdapter 설정
+        tagViewModel.StartFindTagForPlace(mDstPlace);
+        tagViewModel.TagForPlace().observe(this, new Observer<List<TagDTO>>() {
+            @Override
+            public void onChanged(List<TagDTO> tagDTOS) {
+
+            }
+        });
 
         ((TextView)findViewById(R.id.detail_name)).setText(mDstPlace.name);
         ((TextView)findViewById(R.id.detail_address)).setText(mDstPlace.address);
@@ -45,9 +59,10 @@ public class PlaceInfoActivity extends AppCompatActivity {
                 SetTagDialog dialog = new SetTagDialog(getBaseContext(), Collections.EMPTY_LIST, mDstPlace, new SetTagDialog.PlaceTaggedDoneCallback() {
                     @Override
                     public void TaggedDone(boolean updated, List<TagDTO> updatedTags) {
+                        //태그 수정된 게 존재
                         if(updated){
+                            //태그 업데이트 후 디테일 인포 수정 후 어뎁터 연결 -> 화면 표시
                             tagViewModel.update(updatedTags);
-                            //디테일 인포 수정 후 어뎁터 연결 -> 화면 표시
 
                         }
                     }
