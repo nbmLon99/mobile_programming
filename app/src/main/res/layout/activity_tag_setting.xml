@@ -28,7 +28,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:orientation="vertical"
-
+            tools:listitem="@layout/item_tag_list"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <Button

@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
         tagViewModel = new ViewModelProvider(this).get(TagViewModel.class);
         placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
+        PlaceInfoTest();
+
     }
 
     private void mapViewInitialize() {
@@ -149,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
             ObjectAnimator.ofFloat(tagFab,"translationY",-400f).start();
             mainFab.setImageResource(R.drawable.ic_baseline_clear_24);
         }
-        Log.d("isFabOpen",isFabOpen.toString());
         isFabOpen = !isFabOpen;
     }
 
