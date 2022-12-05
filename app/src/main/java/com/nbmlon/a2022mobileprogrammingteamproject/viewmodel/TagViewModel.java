@@ -1,5 +1,7 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -9,6 +11,9 @@ import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.repository.PlaceRepository;
 import com.nbmlon.a2022mobileprogrammingteamproject.repository.TagRepositoy;
 
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -41,10 +46,11 @@ public class TagViewModel extends ViewModel {
                         resultPlaceIDs.retainAll(tag.place_ids);
                     else
                         resultPlaceIDs = tag.place_ids;
+                    Log.d("result 변화", resultPlaceIDs.toString());
+
                 }
             }
         }
-
         placeRepository.searchPlaceFromID(resultPlaceIDs);
     }
 
@@ -77,7 +83,7 @@ public class TagViewModel extends ViewModel {
             @Override
             public void run() {
                 super.run();
-                List<TagDTO> results = Collections.EMPTY_LIST;
+                ArrayList<TagDTO> results = new ArrayList<>();
                 for(TagDTO tagDTO : getAllTags().getValue()){
                     if(tagDTO.place_ids.contains(placeDTO.id))
                         results.add(tagDTO);

@@ -73,13 +73,10 @@ public class TagRepositoy {
 
     /** Tag placeID 업데이트 **/
     public void update(List<TagDTO> tags){
+        allTags.setValue(tags);
         MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            allTags.postValue(tags);
             for (TagDTO tagDTO : tags){
-                if(tagDTO.place_ids.size() > 0)
-                    tagDAO.update(tagDTO);
-                else
-                    tagDAO.delete(tagDTO);
+                tagDAO.update(tagDTO);
             }
         });
     }
