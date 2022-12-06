@@ -35,7 +35,9 @@ import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class MainActivity extends AppCompatActivity implements MapView.POIItemEventListener {
@@ -129,6 +131,8 @@ public class MainActivity extends AppCompatActivity implements MapView.POIItemEv
     }
 
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -136,6 +140,22 @@ public class MainActivity extends AppCompatActivity implements MapView.POIItemEv
             List<PlaceDTO> results = placeViewModel.getResultLiveData().getValue();
             //뷰모델에서 데이터 가져와서 지도에 띄우기
             mapView.MarkingResults(results);
+
+            ArrayList<MapPOIItem> markerArr = new ArrayList<MapPOIItem>();
+            for (PlaceDTO data1 : results) {
+                MapPOIItem marker = new MapPOIItem();
+
+                double latitude = Double.parseDouble(data1.latitude);
+                double longitude = Double.parseDouble(data1.longitude);
+
+                marker.setMapPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude));
+                marker.setItemName(data1.name);
+                markerArr.add(marker);
+
+            }
+            mapView.addPOIItems(markerArr.toArray(new MapPOIItem[markerArr.size()]));
+
+
 
             //Toast로 개수 띄우기
             String resultSize = Integer.toString(results.size());
@@ -147,6 +167,9 @@ public class MainActivity extends AppCompatActivity implements MapView.POIItemEv
             List<PlaceDTO> results = tagViewModel.getSearchResult().getValue();
             //뷰모델에서 데이터 가져와서 지도에 띄우기
             mapView.MarkingResults(results);
+
+
+
 
             //Toast로 개수 띄우기
             String resultSize = Integer.toString(results.size());
