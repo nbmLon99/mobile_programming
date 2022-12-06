@@ -31,7 +31,12 @@ import com.nbmlon.a2022mobileprogrammingteamproject.utils.Utils;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.TagViewModel;
 
+import net.daum.mf.map.api.MapPOIItem;
+import net.daum.mf.map.api.MapPoint;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -142,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
         else if (resultCode == RETURN_SEARCH_TAG){
             List<PlaceDTO> results = tagViewModel.getSearchResult().getValue();
             //뷰모델에서 데이터 가져와서 지도에 띄우기
+
+
+
 
 
             //Toast로 개수 띄우기
