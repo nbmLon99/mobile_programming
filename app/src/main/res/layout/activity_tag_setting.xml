@@ -14,7 +14,7 @@
         <Button
             android:layout_gravity="right"
             android:id="@+id/btn_add_tag"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="테그 추가"
             android:background="@color/color3"

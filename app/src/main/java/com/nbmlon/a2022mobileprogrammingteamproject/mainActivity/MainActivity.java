@@ -31,10 +31,14 @@ import com.nbmlon.a2022mobileprogrammingteamproject.utils.Utils;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.PlaceViewModel;
 import com.nbmlon.a2022mobileprogrammingteamproject.viewmodel.TagViewModel;
 
+import net.daum.mf.map.api.MapPOIItem;
+import net.daum.mf.map.api.MapPoint;
+import net.daum.mf.map.api.MapView;
+
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MapView.POIItemEventListener {
     //RequestCode
     private final static int CALL_SEARCH_CONDITION = 101;
     private final static int CALL_SEARCH_TAG = 102;
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void mapViewInitialize() {
-        mapView = new MyMapView(this);
+        mapView = new MyMapView(this,MainActivity.this);
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.mapview);
         mapViewContainer.addView(mapView);
     }
@@ -131,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode == RETURN_SEARCH_CONDITION){
             List<PlaceDTO> results = placeViewModel.getResultLiveData().getValue();
             //뷰모델에서 데이터 가져와서 지도에 띄우기
-
+            //mapView.MarkingResults(results)
 
             //Toast로 개수 띄우기
             String resultSize = Integer.toString(results.size());
@@ -142,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         else if (resultCode == RETURN_SEARCH_TAG){
             List<PlaceDTO> results = tagViewModel.getSearchResult().getValue();
             //뷰모델에서 데이터 가져와서 지도에 띄우기
-
+            //mapView.MarkingResults(results)
 
             //Toast로 개수 띄우기
             String resultSize = Integer.toString(results.size());
@@ -192,4 +196,30 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onPOIItemSelected(MapView mapView, MapPOIItem mapPOIItem) {
+
+    }
+
+    @Override
+    public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem) {
+        //말풍선 클릭 이벤트(Deprecated)
+
+    }
+
+    @Override
+    public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem, MapPOIItem.CalloutBalloonButtonType calloutBalloonButtonType) {
+        //말풍선 클릭 이벤트
+        Intent intent = new Intent(MainActivity.this, PlaceInfoActivity.class);
+        PlaceDTO placeDTO = (PlaceDTO) mapPOIItem.getUserObject();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("placeDTO", placeDTO);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onDraggablePOIItemMoved(MapView mapView, MapPOIItem mapPOIItem, MapPoint mapPoint) {
+
+    }
 }
