@@ -117,6 +117,7 @@ public class PlaceDTO implements Serializable {
         this.pointRoad = (pointRoad != null)?  ((pointRoad)? "Y" : "N") : null;
     }
 
+
     /** Get Full Address From PlaceDTO **/
     public String getAddress(){
         String result= "부산광역시 " + this.city + " ";
