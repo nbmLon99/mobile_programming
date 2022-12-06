@@ -34,7 +34,7 @@ public class PlaceViewModel extends ViewModel {
         new Runnable() {
             @Override
             public void run() {
-                placeRepository.searchCondition("", parking, storage, infant, wheel, pointRoad);
+                placeRepository.searchCondition(area, parking, storage, infant, wheel, pointRoad);
             }
         }.run();
     }
