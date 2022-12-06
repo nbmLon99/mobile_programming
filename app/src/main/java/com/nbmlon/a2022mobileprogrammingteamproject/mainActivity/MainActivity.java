@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements MapView.POIItemEv
 
     }
 
+
     private void mapViewInitialize() {
         mapView = new MyMapView(this,MainActivity.this);
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.mapview);
