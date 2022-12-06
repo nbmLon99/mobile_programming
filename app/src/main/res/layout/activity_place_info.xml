@@ -12,10 +12,11 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+
         android:text="장소별 Detail page"
         android:background="@color/color2"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:gravity="center"/>
 
     <LinearLayout
