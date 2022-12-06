@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
+import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.placInfoActivity.PlaceInfoActivity;
 import com.nbmlon.a2022mobileprogrammingteamproject.repository.TagRepositoy;
 import com.nbmlon.a2022mobileprogrammingteamproject.searchActivityCondition.SearchActivity_Condition;
@@ -127,15 +129,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RETURN_SEARCH_CONDITION){
-            Log.d("받아온결과 검색개수", Integer.toString(placeViewModel.getResultLiveData().getValue().size()) );
+            List<PlaceDTO> results = placeViewModel.getResultLiveData().getValue();
             //뷰모델에서 데이터 가져와서 지도에 띄우기
 
-            //데이터 지워야함
+
+            //Toast로 개수 띄우기
+            String resultSize = Integer.toString(results.size());
+            Toast.makeText(MainActivity.this, "검색결과 : " + resultSize + "개",Toast.LENGTH_SHORT).show();
+            //repository 초기화
             placeViewModel.resetPlaceResults();
         }
         else if (resultCode == RETURN_SEARCH_TAG){
+            List<PlaceDTO> results = tagViewModel.getSearchResult().getValue();
             //뷰모델에서 데이터 가져와서 지도에 띄우기
-            Log.d("받아온결과 검색개수", Integer.toString(tagViewModel.getSearchResult().getValue().size()) );
+
+
+            //Toast로 개수 띄우기
+            String resultSize = Integer.toString(results.size());
+            Toast.makeText(MainActivity.this, "검색결과 : " + resultSize + "개",Toast.LENGTH_SHORT).show();
+            //repository 초기화
             tagViewModel.resetTagResults();
         }
     }
