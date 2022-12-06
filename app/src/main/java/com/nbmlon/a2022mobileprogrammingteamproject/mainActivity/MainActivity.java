@@ -66,10 +66,10 @@ public class MainActivity extends AppCompatActivity implements MapView.POIItemEv
         setContentView(R.layout.activity_main);
         setFloatingButtonOnClick();
         setSideMenu();
+        mapViewInitialize();
 
         tagViewModel = new ViewModelProvider(this).get(TagViewModel.class);
         placeViewModel = new ViewModelProvider(this).get(PlaceViewModel.class);
-        PlaceInfoTest();
 
     }
 
@@ -139,23 +139,7 @@ public class MainActivity extends AppCompatActivity implements MapView.POIItemEv
         if(resultCode == RETURN_SEARCH_CONDITION){
             List<PlaceDTO> results = placeViewModel.getResultLiveData().getValue();
             //뷰모델에서 데이터 가져와서 지도에 띄우기
-            //mapView.MarkingResults(results)
-
-            ArrayList<MapPOIItem> markerArr = new ArrayList<MapPOIItem>();
-            for (PlaceDTO data1 : results) {
-                MapPOIItem marker = new MapPOIItem();
-
-                double latitude = Double.parseDouble(data1.latitude);
-                double longitude = Double.parseDouble(data1.longitude);
-
-                marker.setMapPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude));
-                marker.setItemName(data1.name);
-                markerArr.add(marker);
-
-            }
-            mapView.addPOIItems(markerArr.toArray(new MapPOIItem[markerArr.size()]));
-
-
+            mapView.MarkingResults(results);
 
             //Toast로 개수 띄우기
             String resultSize = Integer.toString(results.size());
@@ -166,10 +150,7 @@ public class MainActivity extends AppCompatActivity implements MapView.POIItemEv
         else if (resultCode == RETURN_SEARCH_TAG){
             List<PlaceDTO> results = tagViewModel.getSearchResult().getValue();
             //뷰모델에서 데이터 가져와서 지도에 띄우기
-            //mapView.MarkingResults(results)
-
-
-
+            mapView.MarkingResults(results);
 
             //Toast로 개수 띄우기
             String resultSize = Integer.toString(results.size());
