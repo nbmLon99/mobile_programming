@@ -17,10 +17,13 @@ public class MyMapView extends MapView{
         super(context);
         this.setMapViewEventListener(new MyMapViewEventListener().getListener());
         this.setPOIItemEventListener(poiItemEventListener);
+
+        //부산시청 위치 center
+        mapViewCenterPosition(35,129,7);
     }
 
 
-    private void MarkingResults(List<PlaceDTO> placeDTOS){
+    public void MarkingResults(List<PlaceDTO> placeDTOS){
         for (PlaceDTO placeDTO : placeDTOS){
             MapPOIItem marker = new MapPOIItem();
             marker.setItemName(placeDTO.name);
@@ -37,5 +40,8 @@ public class MyMapView extends MapView{
         this.zoomIn(true);
         // 줌 아웃
         this.zoomOut(true);
+    }
+
+    public void resetPOIItem(){
     }
 }
