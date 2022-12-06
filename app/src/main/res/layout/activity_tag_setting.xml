@@ -14,7 +14,7 @@
         <Button
             android:layout_gravity="right"
             android:id="@+id/btn_add_tag"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="테그 추가"
             android:background="@color/color3"
@@ -24,21 +24,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_tag_setting"
             android:layout_width="match_parent"
-            android:layout_height="547dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:orientation="vertical"
             tools:listitem="@layout/item_tag_list"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <Button
-            android:layout_gravity="bottom|right"
-            android:id="@+id/btn_return"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="메인 화면"
-            android:background="@color/color3"/>
     </LinearLayout>
 
 
