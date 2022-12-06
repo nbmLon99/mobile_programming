@@ -38,6 +38,7 @@ import net.daum.mf.map.api.MapView;
 import java.util.List;
 
 
+
 public class MainActivity extends AppCompatActivity implements MapView.POIItemEventListener {
     //RequestCode
     private final static int CALL_SEARCH_CONDITION = 101;
@@ -147,6 +148,9 @@ public class MainActivity extends AppCompatActivity implements MapView.POIItemEv
             List<PlaceDTO> results = tagViewModel.getSearchResult().getValue();
             //뷰모델에서 데이터 가져와서 지도에 띄우기
             //mapView.MarkingResults(results)
+
+
+
 
             //Toast로 개수 띄우기
             String resultSize = Integer.toString(results.size());
