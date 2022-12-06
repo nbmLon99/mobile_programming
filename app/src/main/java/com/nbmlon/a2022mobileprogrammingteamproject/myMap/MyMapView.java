@@ -3,25 +3,31 @@ package com.nbmlon.a2022mobileprogrammingteamproject.myMap;
 import android.content.Context;
 import android.util.AttributeSet;
 
+import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.myMap.maplistener.MyMapViewEventListener;
-import com.nbmlon.a2022mobileprogrammingteamproject.myMap.maplistener.MyPOIItemEventListener;
 
+import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
-public class MyMapView extends MapView {
-    public MyMapView(Context context) {
+import java.util.List;
+
+public class MyMapView extends MapView{
+    public MyMapView(Context context, POIItemEventListener poiItemEventListener) {
         super(context);
-    }
-
-    public MyMapView(Context context, AttributeSet attrs) {
-        super(context, attrs);
         this.setMapViewEventListener(new MyMapViewEventListener().getListener());
-        this.setPOIItemEventListener(new MyPOIItemEventListener().getListener());
+        this.setPOIItemEventListener(poiItemEventListener);
     }
 
-    public MyMapView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
+
+    private void MarkingResults(List<PlaceDTO> placeDTOS){
+        for (PlaceDTO placeDTO : placeDTOS){
+            MapPOIItem marker = new MapPOIItem();
+            marker.setItemName(placeDTO.name);
+            marker.setUserObject(placeDTO);
+            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(Double.parseDouble(placeDTO.latitude), Double.parseDouble(placeDTO.longitude)));
+            this.addPOIItem(marker);
+        }
     }
 
     private void mapViewCenterPosition(int latitude, int longitude, int zoomlevel){
