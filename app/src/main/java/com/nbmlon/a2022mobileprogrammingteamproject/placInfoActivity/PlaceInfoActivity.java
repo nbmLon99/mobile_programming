@@ -1,10 +1,16 @@
 package com.nbmlon.a2022mobileprogrammingteamproject.placInfoActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -60,7 +66,20 @@ public class PlaceInfoActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.detail_address)).setText(mDstPlace.address);
         ((TextView)findViewById(R.id.detail_city)).setText(mDstPlace.city);
         ((TextView)findViewById(R.id.detail_phone)).setText(mDstPlace.phone);
-        ((TextView)findViewById(R.id.detail_url)).setText(mDstPlace.url);
+        TextView tv_url =((TextView)findViewById(R.id.detail_url));
+        SpannableString url = new SpannableString(mDstPlace.url);
+        url.setSpan(new UnderlineSpan(), 0, url.length(), 0);
+        tv_url.setText(url);
+        tv_url.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboardManager = (ClipboardManager) PlaceInfoActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText(mDstPlace.name, mDstPlace.url);
+                clipboardManager.setPrimaryClip(clipData);
+                Toast.makeText(PlaceInfoActivity.this, "url이 복사되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         String status = "";
         if(mDstPlace.parking.equals("Y") ) {status += "주차가능  ";}

@@ -38,7 +38,7 @@
                 android:text="테스트 네임"
                 android:layout_width="match_parent"
                 android:gravity="center"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_height="0dp"
                 android:layout_weight="1"
