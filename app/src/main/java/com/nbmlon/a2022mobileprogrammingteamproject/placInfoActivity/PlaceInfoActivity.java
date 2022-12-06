@@ -62,7 +62,15 @@ public class PlaceInfoActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.detail_phone)).setText(mDstPlace.phone);
         ((TextView)findViewById(R.id.detail_url)).setText(mDstPlace.url);
 
-        ((TextView)findViewById(R.id.detail_condition)).setText(" boolean에 맞게 표시할 영역입니다. ");
+        String status = "";
+        if(mDstPlace.parking.equals("Y") ) {status += "주차가능  ";}
+        if(mDstPlace.storage.equals("Y")) {status += "물품보관함존재  ";}
+        if(mDstPlace.infantHolder.equals("Y")) {status += "유아거치대존재  ";}
+        if(mDstPlace.pointRoad.equals("Y")) {status += "점자유도로존재  ";}
+        if(mDstPlace.wheelChair.equals("Y")) {status += "휠체어이동가능  ";}
+
+
+        ((TextView)findViewById(R.id.detail_condition)).setText((status.isEmpty())? "-" : status);
 
 
         findViewById(R.id.detail_btn_setTag).setOnClickListener(new View.OnClickListener() {
