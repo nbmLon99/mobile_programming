@@ -65,7 +65,7 @@ public class TagRepositoy {
                 allTags.postValue(tmp);
             }
             catch (Exception e){
-                getAllTags();
+                allTags.postValue(tagDAO.getAll());
             }
         });
     }

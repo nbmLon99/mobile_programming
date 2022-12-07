@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -65,13 +66,20 @@ public class SetTagDialog extends Dialog {
                         modifiedPlaceTag.add(tag);
 
                     if (checkedTagIDs.contains(tag.id) && !tag.place_ids.contains(mDstPlace.id)) {
-                        tag.place_ids.add(mDstPlace.id);
+
+                        ArrayList<String> tmp =  new ArrayList<>(tag.place_ids);
+                        tmp.add(mDstPlace.id);
+                        tag.place_ids = tmp;
                         updated =true;
+
                     }
                     else if (!checkedTagIDs.contains(tag.id) && tag.place_ids.contains(mDstPlace.id)) {
-                        tag.place_ids.remove(mDstPlace.id);
+                        ArrayList<String> tmp =  new ArrayList<>(tag.place_ids);
+                        tmp.remove(mDstPlace.id);
+                        tag.place_ids = tmp;
                         updated =true;
                     }
+
                 }
                 placeTaggedDoneCallback.TaggedDone(updated, mAllTags, modifiedPlaceTag);
 

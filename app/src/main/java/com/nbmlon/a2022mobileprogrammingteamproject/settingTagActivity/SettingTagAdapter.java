@@ -51,8 +51,8 @@ public class SettingTagAdapter extends RecyclerView.Adapter<SettingTagAdapter.Ta
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     TagDTO tagRemove = items.get(position);
-                                    items.remove(position);
-                                    SettingTagAdapter.this.notifyItemRemoved(position);
+                                    //items.remove(position);
+                                    //SettingTagAdapter.this.notifyItemRemoved(position);
 
                                     //room에서 삭제 구현필요
                                     rc.TagRemoved(tagRemove);

@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nbmlon.a2022mobileprogrammingteamproject.R;
+import com.nbmlon.a2022mobileprogrammingteamproject.dialog.LoadingDialog;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.PlaceDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.model.TagDTO;
 import com.nbmlon.a2022mobileprogrammingteamproject.placInfoActivity.dialog.SetTagDialog;
@@ -44,32 +45,28 @@ public class PlaceInfoActivity extends AppCompatActivity {
         mDstPlace = (PlaceDTO) intent.getExtras().getSerializable("placeDTO");
 
         tagRv = findViewById(R.id.detail_tagRV);
-        tagViewModel.getAllTags().observe(this, new Observer<List<TagDTO>>() {
+        tagViewModel.StartFindTagForPlace(mDstPlace);
+        LoadingDialog loadingDialog = new LoadingDialog(PlaceInfoActivity.this,"로딩중");
+        loadingDialog.show();
+        tagViewModel.GetTagForPlace().observe(PlaceInfoActivity.this, new Observer<List<TagDTO>>() {
             @Override
             public void onChanged(List<TagDTO> tagDTOS) {
-                tagViewModel.getAllTags().removeObserver(this);
-
-                //TagAdapter 설정
-                tagViewModel.StartFindTagForPlace(mDstPlace);
-                tagViewModel.GetTagForPlace().observe(PlaceInfoActivity.this, new Observer<List<TagDTO>>() {
-                    @Override
-                    public void onChanged(List<TagDTO> tagDTOS) {
-                        mAdapter = new PlaceInfoTagAdapter(tagDTOS);
-                        tagRv.setAdapter(mAdapter);
-                    }
-                });
+                mAdapter = new PlaceInfoTagAdapter(tagDTOS);
+                tagRv.setAdapter(mAdapter);
+                loadingDialog.dismiss();
             }
         });
-
 
         ((TextView)findViewById(R.id.detail_name)).setText(mDstPlace.name);
         ((TextView)findViewById(R.id.detail_address)).setText(mDstPlace.address);
         ((TextView)findViewById(R.id.detail_city)).setText(mDstPlace.city);
         ((TextView)findViewById(R.id.detail_phone)).setText(mDstPlace.phone);
         TextView tv_url =((TextView)findViewById(R.id.detail_url));
-        SpannableString url = new SpannableString(mDstPlace.url);
-        url.setSpan(new UnderlineSpan(), 0, url.length(), 0);
-        tv_url.setText(url);
+        if(mDstPlace.url!=null){
+            SpannableString url = new SpannableString(mDstPlace.url);
+            url.setSpan(new UnderlineSpan(), 0, url.length(), 0);
+            tv_url.setText(url);
+        }
         tv_url.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +97,6 @@ public class PlaceInfoActivity extends AppCompatActivity {
                     public void TaggedDone(boolean updated, List<TagDTO> updatedTags, List<TagDTO> modifiedPlaceTag) {
                         //태그 수정된 게 존재
                         if(updated){
-                            Log.d("updatedTags", updatedTags.toString());
                             //태그 업데이트 후 디테일 인포 수정 후 어뎁터 연결 -> 화면 표시
                             tagViewModel.update(updatedTags);
                             tagViewModel.setModifiedTagList(modifiedPlaceTag);
