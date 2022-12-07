@@ -38,16 +38,14 @@ public class TagViewModel extends ViewModel {
     }
     /** 태그로 검색 **/
     public void searchForTags(Set<Integer> tagIDs) {
-        List<String> resultPlaceIDs = null;
+        ArrayList<String> resultPlaceIDs = null;
         if( tagRepository.getAllTags().getValue() != null ){
             for (TagDTO tag : tagRepository.getAllTags().getValue() ){
                 if (tagIDs.contains(tag.id)){
                     if( resultPlaceIDs != null)
-                        resultPlaceIDs.retainAll(tag.place_ids);
+                        resultPlaceIDs.retainAll(new ArrayList<>(tag.place_ids));
                     else
-                        resultPlaceIDs = tag.place_ids;
-                    Log.d("result 변화", resultPlaceIDs.toString());
-
+                        resultPlaceIDs = new ArrayList<>(tag.place_ids) ;
                 }
             }
         }

@@ -23,8 +23,9 @@ import java.util.List;
 
 /** Tag 추가/삭제 Activity **/
 public class SettingTagActivity extends AppCompatActivity implements SettingTagAdapter.TagRemovedCallback {
-    TagViewModel tagViewModel;
-    SettingTagAdapter mAdapter;
+    private TagViewModel tagViewModel;
+    private SettingTagAdapter mAdapter;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,10 @@ public class SettingTagActivity extends AppCompatActivity implements SettingTagA
         tagViewModel.getAllTags().observe(this, new Observer<List<TagDTO>>() {
             @Override
             public void onChanged(List<TagDTO> tagDTOS) {
+                if(loadingDialog!=null){
+                    loadingDialog.dismiss();
+                    loadingDialog = null;
+                }
                 mAdapter = new SettingTagAdapter(tagDTOS, SettingTagActivity.this);
                 rv.setAdapter(mAdapter);
             }
@@ -77,18 +82,10 @@ public class SettingTagActivity extends AppCompatActivity implements SettingTagA
 
     @Override
     public void TagRemoved(TagDTO tag) {
-        LoadingDialog loadingDialog = new LoadingDialog(this, "삭제중");
+        loadingDialog = new LoadingDialog(this, "삭제중");
         loadingDialog.show();
-
         tagViewModel.delete(tag);
 
-        tagViewModel.getAllTags().observe(this, new Observer<List<TagDTO>>() {
-            @Override
-            public void onChanged(List<TagDTO> tagDTOS) {
-                loadingDialog.dismiss();
-                tagViewModel.getAllTags().removeObserver(this);
-            }
-        });
     }
 
 

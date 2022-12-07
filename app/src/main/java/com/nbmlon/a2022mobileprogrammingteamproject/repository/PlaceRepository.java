@@ -63,7 +63,9 @@ public class PlaceRepository {
                             List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
                             ArrayList<PlaceDTO> result = new ArrayList<>();
                             for( DocumentSnapshot dc : documentSnapshots){
-                                result.add(dc.toObject(PlaceDTO.class));
+                                PlaceDTO reusltPlaceDTO = dc.toObject(PlaceDTO.class);
+                                reusltPlaceDTO.id = dc.getId();
+                                result.add( reusltPlaceDTO );
                             }
                             searchTagResultMutableLiveData.setValue(result);
                         }
@@ -104,7 +106,10 @@ public class PlaceRepository {
                     List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
                     ArrayList<PlaceDTO> results = new ArrayList<>();
                     for (DocumentSnapshot dc : documentSnapshots){
-                        results.add( dc.toObject(PlaceDTO.class) );
+                        PlaceDTO reusltPlaceDTO = dc.toObject(PlaceDTO.class);
+                        reusltPlaceDTO.id = dc.getId();
+                        results.add( reusltPlaceDTO );
+
                     }
                     searchConditionResultMutableLiveData.setValue(results);
                 }
